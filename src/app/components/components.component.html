@@ -1,0 +1,377 @@
+
+<!--==========================
+  Intro Section
+============================-->
+<section id="intro">
+
+  <div class="intro-content">
+    <h2><span>MUNA Matrimonial</span><br>Let's Walk Together</h2>
+    <!--<div>
+      <a href="#contact" class="btn-get-started scrollto">Contact Us</a>
+    </div> -->
+
+        <div class="col-lg-6 col-sm-6 mr-auto ml-auto">
+          <div class="card card-register">
+
+              <form class="register-form">
+                <div>
+
+                    <label>I am looking for a</label>
+                    <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                      <div class="input-group-prepend">
+
+                      </div>
+
+                        <select ng-model="myVar" class="form-control"  >
+                          <option selected value="female">Female
+                          <option value="male">Male
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <label>Age Range</label>
+
+                <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+
+
+                    <input type="text" class="form-control" placeholder="20" (focus)="focus=true" (blur)="focus=false" style="text-align:center;" >
+                    <input type="text" class="form-control" value="TO"  style="text-align:center;" disabled>
+                    <input type="text" class="form-control" placeholder="25" (focus)="focus=true" (blur)="focus=false" style="text-align:center;" >
+                </div>
+                  <!--
+                  <label>Email</label>
+
+                  <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="nc-icon nc-email-85"></i>
+                      </span>
+                    </div>
+
+                      <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+                  </div>
+                  -->
+
+                  <button class="btn btn-danger btn-block btn-round">Let's Begin</button>
+              </form>
+          </div>
+        </div>
+
+
+  </div>
+   <div id="intro-carousel" class="owl-carousel" >
+    <div class="item" style="background-image: url('../assets/img/intro-carousel/Picture1.jpg');"></div>
+    <div class="item" style="background-image: url('../assets/img/intro-carousel/Picture2.jpg');"></div>
+  </div>
+</section><!-- #intro -->
+
+<!-- housing main
+===========================-->
+<main id="main">
+  <app-services></app-services>
+  <app-events></app-events>
+  <app-about></app-about>
+  <app-faq></app-faq>
+  <app-donate></app-donate>
+  <app-contact></app-contact>
+</main><!-- housing -->
+
+
+
+
+
+  <!--==========================
+    Clients Section
+  ============================--
+  <section id="clients" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Clients</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+      </div>
+
+      <div class="owl-carousel clients-carousel">
+        <img src="../assets/img/clients/client-1.png" alt="">
+        <img src="../assets/img/clients/client-2.png" alt="">
+        <img src="../assets/img/clients/client-3.png" alt="">
+        <img src="../assets/img/clients/client-4.png" alt="">
+        <img src="../assets/img/clients/client-5.png" alt="">
+        <img src="../assets/img/clients/client-6.png" alt="">
+      </div>
+
+    </div>
+  </section><!-- #clients -->
+
+
+
+
+
+
+  <!--==========================
+    Our Portfolio Section
+  ============================--
+  <section id="portfolio" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Portfolio</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row no-gutters">
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/1.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/1.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/2.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/2.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/3.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/3.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/4.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/4.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/5.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/5.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/6.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/6.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name </h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/7.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/7.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name </h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4">
+          <div class="portfolio-item wow fadeInUp">
+            <a href="../assets/img/portfolio/8.jpg" class="portfolio-popup">
+              <img src="../assets/img/portfolio/8.jpg" alt="">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Name</h2></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- #portfolio -->
+
+  <!--==========================
+    Testimonials Section
+  ============================--
+  <section id="testimonials" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Testimonials</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+      </div>
+      <div class="owl-carousel testimonials-carousel">
+
+          <div class="testimonial-item">
+            <p>Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore
+
+            </p>
+            <h3>Mrio James</h3>
+            <h4>CEO &amp; Founder</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore
+
+            </p>
+            <h3>Finton Gofnes</h3>
+            <h4>CTO</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore
+
+            </p>
+            <h3>Marcus Kell</h3>
+            <h4>Marketing</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore
+
+            </p>
+            <h3>Williams Belly</h3>
+            <h4>Accounts</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore
+
+            </p>
+            <h3>Larry Hanson</h3>
+            <h4>Investor</h4>
+          </div>
+
+      </div>
+
+    </div>
+  </section><!-- #testimonials -->
+
+  <!--==========================
+    Pricing Section
+  ============================--
+
+ <section id="pricing" class="pricing-table">
+
+       <div class="container">
+      <div class="section-header">
+        <h2>Pricing Table</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla. nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+      </div>
+    </div>
+   <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col-md-5 col-lg-4">
+                  <div class="item">
+                      <div class="heading">
+                          <h3>RESIDENTIAL</h3>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <div class="features">
+                        <ul class="list">
+                          <li><span>Interior Design</span></li>
+                          <li>Project Discussion</li>
+                          <li>Space Planning</li>
+                          <li>Online Consultation</li>
+                        </ul>
+                      </div>
+                      <div class="price">
+                          <h4>$25</h4>
+                      </div>
+                      <button class="btn btn-block btn-outline-primary" type="submit">BUY NOW</button>
+                  </div>
+              </div>
+              <div class="col-md-5 col-lg-4">
+                  <div class="item">
+                      <div class="ribbon">Best</div>
+                      <div class="heading">
+                          <h3>COMMERCIAL</h3>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <div class="features">
+                        <ul class="list">
+                          <li><span>Interior Design</span></li>
+                          <li>Project Discussion</li>
+                          <li>Space Planning</li>
+                          <li>Online Consultation</li>
+                        </ul>
+                      </div>
+                      <div class="price">
+                          <h4>$50</h4>
+                      </div>
+                      <button class="btn btn-block btn-primary" type="submit">BUY NOW</button>
+                  </div>
+              </div>
+              <div class="col-md-5 col-lg-4">
+                  <div class="item">
+                      <div class="heading">
+                          <h3>PROFESSIONAL</h3>
+                      </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <div class="features">
+                         <ul class="list">
+                          <li><span>Interior Design</span></li>
+                          <li>Project Discussion</li>
+                          <li>Space Planning</li>
+                          <li>Online Consultation</li>
+                        </ul>
+                      </div>
+                      <div class="price">
+                          <h4>$150</h4>
+                      </div>
+                      <button class="btn btn-block btn-outline-primary" type="submit">BUY NOW</button>
+                  </div>
+              </div>
+              </div>
+          </div>
+  </section>
+
+
+
+
+  <!--==========================
+    Call To Action Section
+  ============================--
+  <section id="call-to-action" class="wow fadeInUp">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 text-center text-lg-left">
+          <h3 class="cta-title">Get Our Service</h3>
+          <p class="cta-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt fugiat culpa esse aute nulla cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="col-lg-3 cta-btn-container text-center">
+          <a class="cta-btn align-middle" href="#contact">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #call-to-action -->
