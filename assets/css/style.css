@@ -880,6 +880,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   /* background: linear-gradient(45deg, #e91e6357 0%, #405ece91 100%); */
 }
 
+#portfolio .portfolio-item h4 {
+  color: #ffffff;
+  font-size: 10px;
+  margin: 0;
+  font-weight: 700;
+  /*text-transform: capitalize;
+
+  border-bottom: 1px solid #fff;
+  padding: 0 0 34px;
+  /* background: linear-gradient(45deg, #e91e6357 0%, #405ece91 100%); */
+}
+
 #portfolio .portfolio-item img {
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
