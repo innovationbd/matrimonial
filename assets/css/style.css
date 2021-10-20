@@ -192,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   /* height: 70vh; */
   position: relative;
-  background: url("../img/intro-carousel/1.jpg") no-repeat;
+  background: url("../img/intro-carousel/Picture1.jpg") no-repeat;
   background-size: cover;
   border-bottom: 3px solid #F44336;
 }
@@ -233,6 +233,32 @@ h1, h2, h3, h4, h5, h6 {
   color: #FF9800;
   font-weight: bold;
 }
+
+#intro .intro-content .card-register {
+  background-color: #00000036;
+  border-radius: 8px;
+  color: #fff;
+  max-width: 350px;
+  margin: 20px 0 70px;
+  min-height: 300px;
+  padding: 30px;
+  z-index: 1;
+
+  .social-line{
+      .btn{
+          margin-top: 0;
+      }
+  }
+}
+
+#intro .intro-content .card-register label {
+  margin-top: 15px; }
+
+
+#intro .intro-content .card-register .btn {
+  margin-top: 30px; }
+
+
 
 @media (max-width: 767px) {
   #intro .intro-content h2 {
