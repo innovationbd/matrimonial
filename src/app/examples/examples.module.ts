@@ -6,7 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
-import { ServicesComponent } from './services/services.component';
 
 @NgModule({
     imports: [
@@ -18,7 +17,6 @@ import { ServicesComponent } from './services/services.component';
         LandingComponent,
         SignupComponent,
         ProfileComponent,
-        ServicesComponent
     ]
 })
 export class ExamplesModule { }
