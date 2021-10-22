@@ -30,15 +30,16 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active" *ngIf="!isSignup()"><a href="#body">Home</a></li>
-          <li class="menu-active" *ngIf="isSignup()"><a href="">Home</a></li>
-          <li *ngIf="!isSignup()"><a href="#services">Services</a></li>
-          <li *ngIf="!isSignup()"><a href="#portfolio">Events</a></li>
-          <li *ngIf="!isSignup()"><a href="#about">About Us</a></li>
-          <li *ngIf="!isSignup()"><a href="#faq">FAQ</a></li>
-          <li *ngIf="!isSignup()"><a href="#call-to-action">Donate</a></li>
+          <li class="menu-active" *ngIf="isHome()"><a href="#body">Home</a></li>
+          <li *ngIf="!isHome()"><a href="">Home</a></li>
+          <li *ngIf="isHome()"><a href="#services">Services</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/services']">Services</a></li>
+          <li *ngIf="isHome()"><a href="#portfolio">Events</a></li>
+          <li *ngIf="isHome()"><a href="#about">About Us</a></li>
+          <li *ngIf="isHome()"><a href="#faq">FAQ</a></li>
+          <li *ngIf="isHome()"><a href="#call-to-action">Donate</a></li>
 
-          <li *ngIf="!isSignup()"><a href="#contact">Contact</a></li>
+          <li *ngIf="isHome()"><a href="#contact">Contact</a></li>
           <li><a [routerLink]="['/signup']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGIN</a></li>
 
         </ul>
