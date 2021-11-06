@@ -64,14 +64,45 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <label>Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
-                    <div class="row">
-                        <div class="col-md-4 mr-auto ml-auto">
-                            <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <label>Cell Phone</label>
+                            <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">  <i class="nc-icon nc-mobile"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Cell Phone" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>State</label>
+                            <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
+
+                                <select ng-model="myVar" class="form-control">
+                                  <option value="alabama">Alabama
+                                  <option value="newyork">New York
+                                  <option value="california">California
+                                  <option value="texus">Texus
+                                </select>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- big message box
+                    -------------------
+                    <label>Message</label>
+                    <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
+                    <!-- big message box end
+                    -------------------->
+
+
+                    <div class="row">
+                        <div class="col-md-4 mr-auto ml-auto">
+                            <a [routerLink]="['/login']"><button class="btn btn-danger btn-lg btn-fill">Confirm Registration</button></a>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
