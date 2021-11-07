@@ -44,8 +44,9 @@
           <li *ngIf="!isHome()"><a [routerLink]="['/donate']">Donate</a></li>
           <li *ngIf="isHome()"><a href="#contact">Contact</a></li>
           <li *ngIf="!isHome()"><a [routerLink]="['/contact']">Contact</a></li>
-          <li *ngIf="!isLogin()"><a [routerLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGIN</a></li>
+          <li *ngIf="!isLogin() && !isLoggedin()"><a [routerLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGIN</a></li>
           <li *ngIf="isLogin()"><a [routerLink]="['/signup']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>SIGNUP</a></li>
+          <li *ngIf="isLoggedin()"><a [routerLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGOUT</a></li>
 
         </ul>
       </nav><!-- #nav-menu-container -->

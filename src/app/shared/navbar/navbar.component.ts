@@ -95,4 +95,16 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+    isLoggedin() {
+      var titlee = this.location.prepareExternalUrl(this.location.path());
+      if(titlee.charAt(0) === '#'){
+          titlee = titlee.slice( 1 );
+      }
+        if( titlee === '/user-profile' ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
