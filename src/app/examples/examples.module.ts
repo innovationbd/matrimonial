@@ -8,6 +8,11 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { ViewProfileComponent } from './profile/view-profile/view-profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { TopMatchesComponent } from './profile/top-matches/top-matches.component';
+import { MessageComponent } from './profile/message/message.component';
+import { NotificationComponent } from './profile/notification/notification.component';
 
 @NgModule({
     imports: [
@@ -21,6 +26,11 @@ import { LoginComponent } from './login/login.component';
         SignupComponent,
         ProfileComponent,
         LoginComponent,
+        ViewProfileComponent,
+        EditProfileComponent,
+        TopMatchesComponent,
+        MessageComponent,
+        NotificationComponent,
     ]
 })
 export class ExamplesModule { }
