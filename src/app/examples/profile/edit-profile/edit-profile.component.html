@@ -69,13 +69,13 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="form-group form-floating">
                 <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
                 <label for="city">City</label>
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
             <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
                 <select ng-model="myVar" class="form-select" id="state">
                   <option value="alabama">Alabama
@@ -86,7 +86,7 @@
                 <label for="state">State</label>
             </div>
           </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="form-group form-floating">
                     <input type="text" class="form-control" placeholder="Enter ZIP Code" id="zipCode">
                     <label for="zipCode">ZIP Code</label>
@@ -97,23 +97,45 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
-                <label for="city">City</label>
+                <input type="text" class="form-control" placeholder="Cell Phone Number" id="cellPhone">
+                <label for="cellPhone">Cell Phone</label>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
-                <label for="city">City</label>
+                <input type="text" class="form-control" placeholder="Work Phone" id="workPhone">
+                <label for="workPhone">Work Phone</label>
             </div>
           </div>
-          <div class="col-sm-3">
-              <div class="form-group form-floating">
-                  <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="zipCode">
-                  <label for="zipCode">ZIP Code</label>
-              </div>
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Home Phone" id="homePhone">
+                <label for="homePhone">Home Phone</label>
+            </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter Your Email" id="email">
+                <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Work Phone" id="workPhone">
+                <label for="workPhone">Work Phone</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Home Phone" id="homePhone">
+                <label for="homePhone">Home Phone</label>
+            </div>
+          </div>
+        </div>
+
       </div>
   </div>
   <div class="accordion-item">
