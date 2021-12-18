@@ -124,16 +124,122 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Work Phone" id="workPhone">
-                <label for="workPhone">Work Phone</label>
+                <input type="text" class="form-control" placeholder="Personal Website (if any)" id="personalWebsite">
+                <label for="personalWebsite">Personal Website</label>
             </div>
           </div>
-          <div class="col-sm-4">
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group form-floating input-group date" [ngClass]="{'input-group-focus':focus===true}">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" id="dateOfBirth" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true" (blur)="focus=false" />
+                <div class="input-group-append">
+                    <span class="glyphicon glyphicon-calendar input-group-text">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <label for="dateOfBirth">Date of Birth</label>
+            </div>
+          </div>
+          <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Home Phone" id="homePhone">
-                <label for="homePhone">Home Phone</label>
+                <input type="text" class="form-control" placeholder="Enter Your Age (integer)" id="age">
+                <label for="age">Age</label>
             </div>
           </div>
+          <div class="col-sm-3">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Height" id="height">
+                <label for="height">Height (kg)</label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Weight" id="weight">
+                <label for="weight">Weight (inch)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Place of Birth" id="placeOfBirth">
+                <label for="placeOfBirth">Place of Birth (State, Province, District, Country)</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="health conditions" id="health">
+                <label for="health">Please disclose any health conditions, allergies, or disabilities, if any</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+          <label>Current Marital Status:</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="marital_status" id="single" value="Single" checked="">
+                  Single
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="marital_status" id="divorced" value="Divorced" >
+                  Divorced
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="marital_status" id="widowed" value="Widowed" >
+                  Widowed
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+
+          <div class="col-sm-3">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter Your Full Name" id="fullName">
+                <label for="fullName">Full Name</label>
+            </div>
+          </div>
+            <div class="col-sm-3">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="nickname">
+                    <label for="nickname">Nickname(s)</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+            <label>Gender</label>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked="">
+                    Male
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female" >
+                    Female
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            </div>
         </div>
 
       </div>
