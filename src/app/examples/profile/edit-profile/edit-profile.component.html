@@ -1,1 +1,141 @@
-<p>edit-profile works!</p>
+<app-profile-home></app-profile-home>
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+
+              <div class="form-group">
+                  <label>Short Bio</label>
+                  <input type="text" class="form-control" placeholder="Enter Short Bio">
+              </div>
+          </div>
+</div>
+
+<div class="col-lg-9 content ml-auto mr-auto">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        GENERAL INFORMATION
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter Your Full Name" id="fullName">
+                <label for="fullName">Full Name</label>
+            </div>
+          </div>
+            <div class="col-sm-3">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="nickname">
+                    <label for="nickname">Nickname(s)</label>
+                </div>
+            </div>
+            <div class="col-sm-4">
+            <label>Gender</label>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked="">
+                    Male
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female" >
+                    Female
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <textarea class="form-control" placeholder="Enter Your Full Address" id="address"></textarea>
+                <label for="address">Address</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
+                <label for="city">City</label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                <select ng-model="myVar" class="form-select" id="state">
+                  <option value="alabama">Alabama
+                  <option value="newyork">New York
+                  <option value="california">California
+                  <option value="texus">Texus
+                </select>
+                <label for="state">State</label>
+            </div>
+          </div>
+            <div class="col-sm-3">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="Enter ZIP Code" id="zipCode">
+                    <label for="zipCode">ZIP Code</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
+                <label for="city">City</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
+                <label for="city">City</label>
+            </div>
+          </div>
+          <div class="col-sm-3">
+              <div class="form-group form-floating">
+                  <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="zipCode">
+                  <label for="zipCode">ZIP Code</label>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        Academic & Professional Background
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Go to Login, or Let's Begin button on Home page. You will be guided our registration process.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+
+Personal Information
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Yes. Registration is completely free. But you may donate us if you like our service.</div>
+    </div>
+  </div>
+</div>
+</div>

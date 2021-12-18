@@ -11,6 +11,12 @@ import { FaqComponent } from './components/faq/faq.component';
 import { DonateComponent } from './components/donate/donate.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProfileComponent } from './examples/profile/profile.component';
+import { EditProfileComponent } from './examples/profile/edit-profile/edit-profile.component';
+import { MessageComponent } from './examples/profile/message/message.component';
+import { NotificationComponent } from './examples/profile/notification/notification.component';
+import { TopMatchesComponent } from './examples/profile/top-matches/top-matches.component';
+import { ViewProfileComponent } from './examples/profile/view-profile/view-profile.component';
+
 import { SignupComponent } from './examples/signup/signup.component';
 import { LoginComponent } from './examples/login/login.component';
 import { LandingComponent } from './examples/landing/landing.component';
@@ -26,6 +32,12 @@ const routes: Routes =[
     { path: 'donate',           component: DonateComponent },
     { path: 'contact',          component: ContactComponent },
     { path: 'user-profile',     component: ProfileComponent },
+    { path: 'edit-profile',     component: EditProfileComponent },
+    { path: 'message',          component: MessageComponent },
+    { path: 'notification',     component: NotificationComponent },
+    { path: 'top-matches',      component: TopMatchesComponent },
+    { path: 'view-profile',     component: ViewProfileComponent },
+
     { path: 'signup',           component: SignupComponent },
     { path: 'login',            component: LoginComponent },
     { path: 'landing',          component: LandingComponent },

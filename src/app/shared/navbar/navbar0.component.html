@@ -51,3 +51,94 @@
         </div>
     </div>
 </nav>
+
+
+
+
+<!--==========================
+    Top Bar
+  ============================-
+  <section id="topbar" class="d-none d-lg-block">
+    <div class="container clearfix">
+      <div class="contact-info float-left">
+        <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">name@websitename.com</a>
+        <i class="fa fa-phone"></i> +1 2345 67855 22
+      </div>
+      <div class="social-links float-right">
+        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+    Header
+  ============================--
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1 *ngif=false><span><i class="fa fa-heart"></i></span><a href="#body" class="scrollto">`  <b>MUNA MATRIMONIAL</b></a></h1>
+
+        <h1 ><span><i class="fa fa-heart"></i></span><a [routerLink]="['/user-profile']" class="scrollto">`  <b>MARIA RESA</b></a></h1>
+        <!-- <a href="#body"><img src="../assets/img/logo.png" alt="" title="" /></a>--
+      </div>
+
+      <!--==========================
+        Nav
+      ============================--
+      <nav id="nav-menu-container" class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+        <div class="container">
+            <a class="navbar-brand" href="https://www.creative-tim.com">Paper Kit</a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+
+        <div class="navbar-collapse" id="navbarToggler">
+        <ul class="nav-menu navbar-nav ml-auto mr-auto">
+          <li class="menu-active" *ngIf="isHome()"><a href="#body">Home</a></li>
+          <li *ngIf="!isHome()"><a href="">Home</a></li>
+          <li *ngIf="isHome()"><a href="#services">Services</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/services']">Services</a></li>
+          <li *ngIf="isHome()"><a href="#portfolio">Events</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/events']">Events</a></li>
+          <li *ngIf="isHome()"><a href="#about">About Us</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/about']">About Us</a></li>
+          <li *ngIf="isHome()"><a href="#faq">FAQ</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/faq']">FAQ</a></li>
+          <li *ngIf="isHome()"><a href="#call-to-action">Donate</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/donate']">Donate</a></li>
+          <li *ngIf="isHome()"><a href="#contact">Contact</a></li>
+          <li *ngIf="!isHome()"><a [routerLink]="['/contact']">Contact</a></li>
+          <li *ngIf="!isLogin() && !isLoggedin()"><a [routerLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGIN</a></li>
+          <li *ngIf="isLogin()"><a [routerLink]="['/signup']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>SIGNUP</a></li>
+          <!--<li *ngIf="isLoggedin()"><a [rou         terLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGOUT</a></li>
+          --
+          <li *ngIf="isLoggedin()" class="nav-item">
+              <a  href="#pk"><i class="nc-icon nc-single-02" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item ">
+              <div ngbDropdown class="dropdown" placement="bottom-left">
+              <a  id="dropdownBasic1" style="color: blue;" ngbDropdownToggle><i class="nc-icon nc-bullet-list-67" aria-hidden="true"></i></a>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
+                      <a class="dropdown-item">Action - 1</a>
+                      <a class="dropdown-item">Another Action</a>
+                      <a class="dropdown-item">Something else is here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item">Separated link</a>
+                  </div>
+              </div>
+          </li>
+        </ul>
+        </div>
+        </div>
+
+
+      </nav><!-- #nav-menu-container --
+    </div>
+  </header><!-- #header -->

@@ -13,6 +13,7 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
 import { TopMatchesComponent } from './profile/top-matches/top-matches.component';
 import { MessageComponent } from './profile/message/message.component';
 import { NotificationComponent } from './profile/notification/notification.component';
+import { ProfileHomeComponent } from './profile/profile-home/profile-home.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { NotificationComponent } from './profile/notification/notification.compo
         TopMatchesComponent,
         MessageComponent,
         NotificationComponent,
+        ProfileHomeComponent,
     ]
 })
 export class ExamplesModule { }

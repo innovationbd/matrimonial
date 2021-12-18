@@ -100,7 +100,7 @@ export class NavbarComponent implements OnInit {
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 1 );
       }
-        if( titlee === '/user-profile' ) {
+        if( titlee === '/user-profile' || titlee === '/view-profile' || titlee === '/top-matches' || titlee === '/edit-profile' ) {
             return true;
         }
         else {
