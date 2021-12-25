@@ -88,8 +88,8 @@
           </div>
             <div class="col-sm-4">
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Enter ZIP Code" id="zipCode">
-                    <label for="zipCode">ZIP Code</label>
+                    <input type="text" class="form-control" placeholder="Enter ZIP Code" id="zip">
+                    <label for="zip">ZIP Code</label>
                 </div>
             </div>
         </div>
@@ -184,63 +184,101 @@
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="marital_status" id="single" value="Single" checked="">
+                  <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="Single" checked="">
                   Single
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="marital_status" id="divorced" value="Divorced" >
+                  <input class="form-check-input" type="radio" name="maritalStatus" id="divorced" value="Divorced" >
                   Divorced
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="marital_status" id="widowed" value="Widowed" >
+                  <input class="form-check-input" type="radio" name="maritalStatus" id="widowed" value="Widowed" >
                   Widowed
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+            <label>Do You Have Children?</label>
+            <br>
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="children" id="no" value="no" checked="">
+                    No
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="children" id="yes" value="yes" >
+                    Yes
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+              </div>
 
           <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter Your Full Name" id="fullName">
-                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" placeholder="How many Children?" id="childrenNumber">
+                <label for="childrenNumber">How many Children?</label>
             </div>
           </div>
-            <div class="col-sm-3">
+            <div class="col-sm-6">
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="nickname">
-                    <label for="nickname">Nickname(s)</label>
+                    <input type="text" class="form-control" placeholder="What are their Ages?" id="childrenAges">
+                    <label for="childrenAges">What are their Ages?</label>
                 </div>
-            </div>
-            <div class="col-sm-4">
-            <label>Gender</label>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-check-radio">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked="">
-                    Male
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="form-check-radio">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female" >
-                    Female
-                    <span class="form-check-sign"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
             </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+          <label>Immigration Status</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="immigrationStatus" id="UScitizen" value="UScitizen" checked="">
+                  US Citizen
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="immigrationStatus" id="permanentResident" value="permanentResident" >
+                  Permanent Resident
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="immigrationStatus" id="other" value="other" >
+                  Other
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="What are their Ages?" id="immigrationStatusOther">
+                    <label for="immigrationStatusOther">If Other, please specify</label>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-9 ml-auto mr-auto">
+              </div>
+              <div class="col-md-3">
+                  <a [routerLink]="['/edit-profile']"><button class="btn btn-success btn-block btn-lg btn-fill">Save</button></a>
+              </div>
+          </div>
 
       </div>
   </div>
@@ -251,7 +289,371 @@
       </button>
     </h2>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Go to Login, or Let's Begin button on Home page. You will be guided our registration process.</div>
+      <div class="accordion-body">
+        <h6>Academic Background</h6>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="High School" id="highSchool">
+              <label for="highSchool">High School</label>
+          </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="High School Year" id="highSchoolYear">
+                <label for="highSchoolYear">Year</label>
+            </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Bachelors" id="bachelors">
+              <label for="bachelors">Bachelors</label>
+          </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Bachelors Year" id="bachelorsYear">
+                <label for="bachelorsYear">Year</label>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Masters in" id="masters">
+              <label for="masters">Masters in</label>
+          </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Masters Year" id="mastersYear">
+                <label for="mastersYear">Year</label>
+            </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Doctorate in" id="doctorate">
+              <label for="doctorate">Doctorate in</label>
+          </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Doctorate Year" id="doctorateYear">
+                <label for="doctorateYear">Year</label>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Other Degree(s)" id="otherDegree">
+              <label for="otherDegree">Other Degree(s)</label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Other Degree(s) Year" id="otherDegreeYear">
+                <label for="otherDegreeYear">Year(s)</label>
+            </div>
+        </div>
+      </div>
+
+        <h6>Professional Background</h6>
+      <div class="row">
+        <div class="col-sm-3">
+        <label>Are you currently employed?</label>
+        <br>
+            <div class="form-check-radio">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="employed" id="yes" value="yes" checked="">
+                Yes
+                <span class="form-check-sign"></span>
+              </label>
+            </div>
+            <div class="form-check-radio">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="employed" id="no" value="no" >
+                No
+                <span class="form-check-sign"></span>
+              </label>
+            </div>
+          </div>
+        <div class="col-sm-3">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Where do you work?" id="employment">
+              <label for="employment">If yes, where do you work?</label>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Position" id="position">
+                <label for="position">Position</label>
+            </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group form-floating">
+              <input type="text" class="form-control" placeholder="Income (yearly)" id="income">
+              <label for="income">Income (yearly)</label>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+
+Parent/Guardian's Information
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Names and Relationships" id="guarName">
+                <label for="guarName">Names and Relationships</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group form-floating">
+                <textarea class="form-control" placeholder="Guardian's Full Address" id="guarAddress"></textarea>
+                <label for="guarAddress">Address</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Guardian's City" id="guarCity">
+                <label for="guarCity">City</label>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                <select ng-model="myVar" class="form-select" id="guarState">
+                  <option value="alabama">Alabama
+                  <option value="newyork">New York
+                  <option value="california">California
+                  <option value="texus">Texus
+                </select>
+                <label for="guarState">State</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="Guardian's Country" id="guarCountry">
+                <label for="guarCountry">Country</label>
+            </div>
+          </div>
+          <div class="col-sm-4">
+              <div class="form-group form-floating">
+                  <input type="text" class="form-control" placeholder="Guardian's Phone" id="guarPhone">
+                  <label for="guarPhone">Phone</label>
+              </div>
+          </div>
+          <div class="col-sm-4">
+              <div class="form-group form-floating">
+                  <input type="text" class="form-control" placeholder="Guardian's Email" id="guarEmail">
+                  <label for="guarEmail">Email</label>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group form-floating">
+                  <input type="text" class="form-control" placeholder="Guardian's Profession" id="guarProfession">
+                  <label for="guarProfession">Profession</label>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <textarea class="form-control" placeholder="Family Brief" id="familyBrief"></textarea>
+                <label for="familyBrief">Please enter any additional information about your family that you would like to share</label>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+
+Personal Information
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <div class="row">
+          <div class="col-sm-12">
+          <label>Personal Religious Practice</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="hanafi" value="Hanafi">
+                  Hanafi
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="shafiee" value="Shafiee" >
+                  Shafiee
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="maliki" value="Maliki" >
+                  Maliki
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="hanbali" value="Hanbali" >
+                  Hanbali
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="ahleHadith" value="Ahle Hadith" >
+                  Ahle Hadith
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="sunni" value="Sunni" >
+                  Sunni
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="shiite" value="Shi’ite" >
+                  Shi’ite
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="religiousPractice" id="other" value="Other" >
+                  Other
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="religiousPracticeOther">
+                <label for="religiousPracticeOther">if Other, Please Specify</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <textarea class="form-control" placeholder="Religious Practice Brief" id="religiousPracticeBrief"></textarea>
+                <label for="religiousPracticeBrief">Please write about your religious practices, in brief (ex: daily prayers, fasting, attending halaqas, visiting the masjid, etc.)</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+              <div class="form-group form-floating">
+                  <input type="text" class="form-control" placeholder="Revert Time" id="revertTime">
+                  <label for="revertTime">If you are a revert, please tell us, when did you accept Islam?</label>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+          <h6>This question is only for Brothers</h6>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="beard" id="bearded" value="Bearded" checked="">
+                  I have a beard
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="beard" id="noBeard" value="Not Bearded" >
+                  I don’t have a beard
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-sm-5">
+          <h6>This question is only for Sisters: I Wear a-</h6>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="wear" id="headscarf" value="Headscarf">
+                  Headscarf
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="wear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  Jelbab/Abaya
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio" style="margin-right:28px;">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="wear" id="niqab" value="Niqab">
+                  Niqab
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio" >
+                <label class="form-check-label">
+                  <input class="form-check-input"  type="radio" name="wear" id="none" value="None">
+                  None
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-sm-3">
+          <h6>Are you a smoker?</h6>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="smoker" id="no" value="No" checked="">
+                  I do not smoke
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="smoker" id="yes" value="Yes" >
+                  I smoke
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+
+Personal Information
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Yes. Registration is completely free. But you may donate us if you like our service.</div>
     </div>
   </div>
   <div class="accordion-item">
