@@ -272,14 +272,7 @@
                 </div>
             </div>
           </div>
-          <div class="row">
-              <div class="col-md-9 ml-auto mr-auto">
-              </div>
-              <div class="col-md-3">
-                  <a [routerLink]="['/edit-profile']"><button class="btn btn-success btn-block btn-lg btn-fill">Save</button></a>
-              </div>
-          </div>
-
+      </div>
       </div>
   </div>
   <div class="accordion-item">
@@ -480,16 +473,15 @@ Parent/Guardian's Information
         </div>
         </div>
       </div>
-    </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+    <h2 class="accordion-header" id="flush-headingFour">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
 
 Personal Information
       </button>
     </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
         <div class="row">
           <div class="col-sm-12">
@@ -646,26 +638,285 @@ Personal Information
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+    <h2 class="accordion-header" id="flush-headingFive">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
 
-Personal Information
+SPOUSAL PREFERENCES
       </button>
     </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Yes. Registration is completely free. But you may donate us if you like our service.</div>
+    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <div class="row">
+          <div class="col-sm-5">
+          <h6>Religious Practices</h6>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preReligious" id="sunni" value="Sunni" >
+                  Sunni
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preReligious" id="shiite" value="Shi’ite" >
+                  Shi’ite
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preReligious" id="other" value="Other" >
+                  Other
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+          <div class="col-sm-7">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="preReligiousOther">
+                <label for="preReligiousOther">if Other, Please Specify</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group form-floating">
+                <textarea class="form-control" placeholder="Religious Practice Preferences in Brief" id="preReligiousBrief"></textarea>
+                <label for="preReligiousBrief">Please write any religious practice preferences, in brief</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+          <h6>This question is only for Brothers:</h6>
+          <label>Preferences for a wife-</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preWear" id="headscarf" value="Headscarf">
+                  Headscarf
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preWear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  Jelbab/Abaya
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio" style="margin-right:28px;">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preWear" id="niqab" value="Niqab">
+                  Niqab
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio" >
+                <label class="form-check-label">
+                  <input class="form-check-input"  type="radio" name="preWear" id="noPreference" value="No Preference">
+                  No Preference
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-sm-4">
+          <h6>This question is only for Sisters</h6>
+          <label>Preferences for a husband-</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preBeard" id="beard" value="Beard" checked="">
+                  Beard
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preBeard" id="noBeard" value="No Beard" >
+                  No Beard
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preBeard" id="noPreference" value="No Preference" >
+                  No Preference
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-sm-3">
+          <h6>Are You Fine with <br>Smoking?</h6>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preSmoking" id="no" value="No" checked="">
+                  No
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preSmoking" id="yes" value="Yes" >
+                  Yes
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preSmoking" id="noPreference" value="No Preference" >
+                  No Preference
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+          </div>
+          </div>
+        <div class="row">
+          <h6>Ethnic Background</h6>
+          <div class="col-sm-6">
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preEthnic" id="own" value="my own ethnic background or country of origin" checked="">
+                  I prefer my future spouse from my own ethnic background or country of origin (specify)
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="Specify own ethnic background or country" id="preEthnicOwn">
+                    <label for="preEthnicOwn">Specify own ethnic background or country</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preEthnic" id="specific" value="from a specific ethnicity or country" >
+                  I am seeking my future spouse to be from a specific ethnicity or country (specify)
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-floating">
+                    <input type="text" class="form-control" placeholder="Specify ethnic background or country" id="preEthnicSpecific">
+                    <label for="preEthnicSpecific">Specify ethnic background or country</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preEthnic" id="noPreference" value="I have no Preference" >
+                  I have no Preference
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+        </div>
+
+        <h6>Immigration Status</h6>
+        <div class="row">
+            <div class="col-sm-7">
+          <label>I would prefer my future spouse is a-</label>
+          <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="UScitizen" value="US Citizen" >
+                  US Citizen
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="permanentResident" value="Permanent Resident" >
+                  Permanent Resident
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="other" value="Other" >
+                  Other (specify)
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+            </div>
+          <div class="col-sm-5">
+            <div class="form-group form-floating">
+                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="preImmigrationStatusOther">
+                <label for="preImmigrationStatusOther">if Other, Please Specify</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+        <h6>Marital Status</h6>
+
+          <div class="col-sm-12">
+          <label>I prefer a spouse who’s-</label>
+          <div class="form-check-radio">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="preMaritalStatus" id="single" value="Single" checked="">
+              Single
+              <span class="form-check-sign"></span>
+            </label>
+          </div>
+          <div class="form-check-radio">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="preMaritalStatus" id="divorced" value="Divorced" >
+              Divorced
+              <span class="form-check-sign"></span>
+            </label>
+          </div>
+          <div class="form-check-radio">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="preMaritalStatus" id="widowed" value="Widowed" >
+              Widowed
+              <span class="form-check-sign"></span>
+            </label>
+          </div>
+          </div>
+          <h6>Children</h6>
+
+            <div class="col-sm-12">
+            <label>I am willing to consider a spouse with existing children-</label>
+            <div class="form-check-radio">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="preChildren" id="yes" value="Yes">
+                Yes
+                <span class="form-check-sign"></span>
+              </label>
+            </div>
+            <div class="form-check-radio">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="preChildren" id="no" value="No" >
+                No
+                <span class="form-check-sign"></span>
+              </label>
+            </div>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+    <h2 class="accordion-header" id="flush-headingSix">
+      <button class="btn btn-danger accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
 
 Personal Information
       </button>
     </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">Yes. Registration is completely free. But you may donate us if you like our service.</div>
     </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+      <div class="col-md-9 ml-auto mr-auto" >
+      </div>
+      <div class="col-md-3">
+          <a [routerLink]="['/edit-profile']"><button class="btn btn-success btn-block btn-lg btn-fill">Save</button></a>
+      </div>
   </div>
 </div>
 </div>
