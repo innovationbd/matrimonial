@@ -14,4 +14,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isSignedUp() {
+    if (localStorage.getItem('isSignedUp') == "true") {
+      //localStorage.setItem('isSignedUp', "false");
+      return true;
+    }
+    return false;
+  }
+
+  clearSignedUp() {
+    localStorage.removeItem('isSignedUp');
+    return true;
+  }
+
 }

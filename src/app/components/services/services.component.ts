@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {SharedService} from 'app/shared.service';
 
 @Component({
   selector: 'app-services',
@@ -9,9 +11,13 @@ export class ServicesComponent implements OnInit {
   test : Date = new Date();
   focus;
   focus1;
-  constructor() { }
+  isAdmin;
+
+  constructor(private service:SharedService) { }
 
   ngOnInit(): void {
+    this.isAdmin = this.service.isAdmin();
   }
+
 
 }

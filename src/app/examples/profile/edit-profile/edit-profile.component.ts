@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-
+  focus;
+  focus1;
+  model;
   constructor() { }
 
   ngOnInit(): void {

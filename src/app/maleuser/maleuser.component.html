@@ -1,0 +1,180 @@
+<button type="button"
+class="btn btn-primary m-2 float-end"
+data-bs-toggle="modal"
+data-bs-target="#exampleModal"
+(click)="addClick()">Add Male User</button>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Male ID</th>
+            <th>Full Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        <tr *ngFor="let male of maleusers" >
+            <td> {{male.maleId}}</td>
+            <td>{{male.fullName}}    </td>
+            <td>{{male.city}} </td>
+            <td>{{male.state}} </td>
+            <td>{{male.email}} </td>
+            <td>{{male.status}} </td>
+            <td>
+                <button
+                type=button class="btn btn-light mr-1"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="editClick(male)"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                  </svg>
+                </button>
+
+                <button
+                type=button class="btn btn-light mr-1"
+                (click)="deleteClick(male.maleId)"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                  </svg>
+                </button>
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+    <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="p-2 w-50 bd-highlight">
+
+            <div class="input-group mb-3"><span class="input-group-text">Full Name</span><input type="text" class="form-control" [(ngModel)]="FullName"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Nickname</span><input type="text" class="form-control" [(ngModel)]="NickName"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Gender</span><input type="text" class="form-control" [(ngModel)]="Gender"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Address</span><input type="text" class="form-control" [(ngModel)]="Address"></div>
+            <div class="input-group mb-3"><span class="input-group-text">City</span><input type="text" class="form-control" [(ngModel)]="City"></div>
+            <div class="input-group mb-3"><span class="input-group-text">State</span><input type="text" class="form-control" [(ngModel)]="State"></div>
+            <div class="input-group mb-3"><span class="input-group-text">ZIP Code</span><input type="text" class="form-control" [(ngModel)]="Zip"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Cell Phone</span><input type="text" class="form-control" [(ngModel)]="CellPhone"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Work Phone</span><input type="text" class="form-control" [(ngModel)]="WorkPhone"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Home Phone</span><input type="text" class="form-control" [(ngModel)]="HomePhone"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Email</span><input type="text" class="form-control" [(ngModel)]="Email"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Personal website</span><input type="text" class="form-control" [(ngModel)]="PersonalWebsite"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Age</span><input type="text" class="form-control" [(ngModel)]="Age"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Date of Birth</span><input type="date" class="form-control" [(ngModel)]="DateOfBirth"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Height (inch)</span><input type="text" class="form-control" [(ngModel)]="Height"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Weight (kg)</span><input type="text" class="form-control" [(ngModel)]="Weight"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Place of Birth (State, Province, District, Country)</span><input type="text" class="form-control" [(ngModel)]="PlaceOfBirth"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Please disclose any health conditions, allergies, or disabilities, if any:</span><input type="text" class="form-control" [(ngModel)]="Health"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Current Marital Status</span><input type="text" class="form-control" [(ngModel)]="MaritalStatus"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Do you have children?</span><input type="text" class="form-control" [(ngModel)]="Children"></div>
+            <div class="input-group mb-3"><span class="input-group-text">How many?</span><input type="text" class="form-control" [(ngModel)]="ChildrenNumber"></div>
+            <div class="input-group mb-3"><span class="input-group-text">What are their ages?</span><input type="text" class="form-control" [(ngModel)]="ChildrenAges"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Immigration status</span><input type="text" class="form-control" [(ngModel)]="ImmigrationStatus"></div>
+            <div class="input-group mb-3"><span class="input-group-text">High School</span><input type="text" class="form-control" [(ngModel)]="HighSchool"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Year</span><input type="text" class="form-control" [(ngModel)]="HighSchoolYear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Bachelors</span><input type="text" class="form-control" [(ngModel)]="Bachelors"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Year</span><input type="text" class="form-control" [(ngModel)]="BachelorsYear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Masters in</span><input type="text" class="form-control" [(ngModel)]="Masters"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Year</span><input type="text" class="form-control" [(ngModel)]="MastersYear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Doctorate in</span><input type="text" class="form-control" [(ngModel)]="Doctorate"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Year</span><input type="text" class="form-control" [(ngModel)]="DoctorateYear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Other degrees</span><input type="text" class="form-control" [(ngModel)]="OtherDegree"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Year</span><input type="text" class="form-control" [(ngModel)]="OtherDegreeYear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Are you currently employed?</span><input type="text" class="form-control" [(ngModel)]="Employed"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Where do your work?</span><input type="text" class="form-control" [(ngModel)]="Employment"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Position</span><input type="text" class="form-control" [(ngModel)]="Position"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Income (yearly)</span><input type="text" class="form-control" [(ngModel)]="Income"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Personal religious practice</span><input type="text" class="form-control" [(ngModel)]="ReligiousPractice"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Please write about your religious practices, in brief (ex: daily prayers, fasting, attending halaqas, visiting the masjid, etc.)</span><input type="text" class="form-control" [(ngModel)]="ReligiousPracticeBrief"></div>
+            <div class="input-group mb-3"><span class="input-group-text">If you are a revert, please tell us, when did you accept Islam?</span><input type="text" class="form-control" [(ngModel)]="RevertTime"></div>
+            <div class="input-group mb-3"><span class="input-group-text">I wear a</span><input type="text" class="form-control" [(ngModel)]="Beard"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Are you a smoker?</span><input type="text" class="form-control" [(ngModel)]="Smoker"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Preferred Religious practices</span><input type="text" class="form-control" [(ngModel)]="PreReligious"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Please write any religious practice preferences, in brief</span><input type="text" class="form-control" [(ngModel)]="PreReligiousBrief"></div>
+            <div class="input-group mb-3"><span class="input-group-text">preferences for a husband with</span><input type="text" class="form-control" [(ngModel)]="PreWear"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Are you fine with smoking?</span><input type="text" class="form-control" [(ngModel)]="PreSmoking"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Ethnic background</span><input type="text" class="form-control" [(ngModel)]="PreEthnic"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Ethnic background details (please specify)</span><input type="text" class="form-control" [(ngModel)]="PreEthnicSpecific"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Immigration Status—: I would prefer my future spouse is a</span><input type="text" class="form-control" [(ngModel)]="PreImmigrationStatus"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Marital Status—I prefer a spouse who’s</span><input type="text" class="form-control" [(ngModel)]="PreMaritalStatus"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Children—I am willing to consider a spouse with existing children</span><input type="text" class="form-control" [(ngModel)]="PreChildren"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Preferred spouse education level</span><input type="text" class="form-control" [(ngModel)]="PreEducation"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Preferred employment of future spouse-</span><input type="text" class="form-control" [(ngModel)]="PreEmployment"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Preferred minimum yearly Income of future spouse (USD)</span><input type="text" class="form-control" [(ngModel)]="PreIncome"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Preferred maximum age gap</span><input type="text" class="form-control" [(ngModel)]="PreAgeGap"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Names and relationships</span><input type="text" class="form-control" [(ngModel)]="GuarName"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Address</span><input type="text" class="form-control" [(ngModel)]="GuarAddress"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's City</span><input type="text" class="form-control" [(ngModel)]="GuarCity"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's State</span><input type="text" class="form-control" [(ngModel)]="GuarState"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Country</span><input type="text" class="form-control" [(ngModel)]="GuarCountry"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Phone</span><input type="text" class="form-control" [(ngModel)]="GuarPhone"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Email</span><input type="text" class="form-control" [(ngModel)]="GuarEmail"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Guardian's Profession</span><input type="text" class="form-control" [(ngModel)]="GuarProfession"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Please enter any additional information about your family that you would like to share:</span><input type="text" class="form-control" [(ngModel)]="FamilyBrief"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Name1</span><input type="text" class="form-control" [(ngModel)]="RefName1"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Relationship1</span><input type="text" class="form-control" [(ngModel)]="RefRelation1"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Phone1</span><input type="text" class="form-control" [(ngModel)]="RefPhone1"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Name2</span><input type="text" class="form-control" [(ngModel)]="RefName2"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Relationship2</span><input type="text" class="form-control" [(ngModel)]="RefRelation2"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Phone2</span><input type="text" class="form-control" [(ngModel)]="RefPhone2"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Name3</span><input type="text" class="form-control" [(ngModel)]="RefName3"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Relationship3</span><input type="text" class="form-control" [(ngModel)]="RefRelation3"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Referee Phone3</span><input type="text" class="form-control" [(ngModel)]="RefPhone3"></div>
+            <div class="input-group mb-3"><span class="input-group-text">photo</span><input type="text" class="form-control" [(ngModel)]="Photo"></div>
+            <div class="input-group mb-3"><span class="input-group-text">cv</span><input type="text" class="form-control" [(ngModel)]="Cv"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Album</span><input type="text" class="form-control" [(ngModel)]="Album"></div>
+            <div class="input-group mb-3"><span class="input-group-text">government-issued ID</span><input type="text" class="form-control" [(ngModel)]="GovIssuedId"></div>
+            <div class="input-group mb-3"><span class="input-group-text">matching id show limit</span><input type="text" class="form-control" [(ngModel)]="MatchShowLimit"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Password</span><input type="text" class="form-control" [(ngModel)]="UserPass"></div>
+            <div class="input-group mb-3"><span class="input-group-text">Status</span><input type="text" class="form-control" [(ngModel)]="Status"></div>
+            <div class="input-group mb-3"><span class="input-group-text">account Opening Date</span><input type="text" class="form-control" [(ngModel)]="OpeningDate"></div>
+            <div class="input-group mb-3"><span class="input-group-text">last edit time</span><input type="text" class="form-control" [(ngModel)]="LastEdit"></div>
+
+
+
+        </div>
+    </div>
+
+
+
+        <button type="button" (click)="createClick()"
+        *ngIf="MaleId==0" class="btn btn-primary">
+        Create
+        </button>
+
+        <button type="button" (click)="updateClick()"
+        *ngIf="MaleId!=0" class="btn btn-primary">
+        Update
+        </button>
+
+    </div>
+
+</div>
+</div>
+</div>

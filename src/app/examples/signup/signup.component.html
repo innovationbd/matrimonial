@@ -20,33 +20,34 @@
         <div class="row">
             <div class="col-md-8 mr-auto ml-auto">
                 <h2 class="text-center">Sign Up for FREE!</h2>
-                <form class="contact-form">
+                <div class="contact-form">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Name</label>
+                            <label>Name</label><span *ngIf=!fullNameValidate() style="color:red;">. *Please insert your name</span>
                             <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Your Full Name" (focus)="focus=true" (blur)="focus=false" required>
+                                <input type="text" class="form-control" [(ngModel)]="FullName" placeholder="Your Full Name" (focus)="focus=true" (blur)="focus=false" required>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label>Email</label>
+                            <label>Email</label><span *ngIf=!emailValidate() style="color:red;">. *Please insert your email address.</span>
                             <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
+                                <input type="text" class="form-control" [(ngModel)]="Email" placeholder="Email" (focus)="focus1=true" (blur)="focus1=false" >
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Sex</label>
+                            <label>Gender</label><span *ngIf=!genderValidate() style="color:red;">. *Please select gender</span>
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
 
-                                <select ng-model="myVar" class="form-control">
+                                <select [(ngModel)]="Gender" class="form-control" placeholder="Select Your Gender">
                                   <option value="female">Female
                                   <option value="male">Male
                                 </select>
@@ -55,8 +56,8 @@
                         <div class="col-md-6">
                             <label>Date of Birth</label>
                             <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                                <input class="form-control" placeholder="yyyy-mm-dd"
-                                     name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true" (blur)="focus=false" />
+                                <input  class="form-control" placeholder="yyyy-mm-dd"
+                                name="dp" [(ngModel)]="DateOfBirth" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true" (blur)="focus=false" >
                                 <div class="input-group-append">
                                     <span class="glyphicon glyphicon-calendar input-group-text">
                                       <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -72,21 +73,50 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">  <i class="nc-icon nc-mobile"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Cell Phone" (focus)="focus1=true" (blur)="focus1=false" >
+                                <input type="text" class="form-control" [(ngModel)]="CellPhone" placeholder="Cell Phone" (focus)="focus1=true" (blur)="focus1=false" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label>State</label>
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
 
-                                <select ng-model="myVar" class="form-control">
-                                  <option value="alabama">Alabama
+                                <select [(ngModel)]="State" class="form-control">
+                                  <option value="alabama" selected>Alabama
                                   <option value="newyork">New York
                                   <option value="california">California
                                   <option value="texus">Texus
                                 </select>
                             </div>
                         </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Password</label><span *ngIf=!passwordValidate() style="color:red;">. *You must set a password</span>
+                            <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="nc-icon nc-key-25"></i></span>
+                                </div>
+                                <input type="password" class="form-control" [(ngModel)]="pass1" placeholder="Set a Password" (focus)="focus=true" (blur)="focus=false">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Retype Password .</label>
+                            <span >
+                              <i *ngIf=!passMatched() style="color:red;" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                              <i *ngIf=passMatched() style="color:green;"class="fa fa-check-circle" aria-hidden="true"></i>
+                              <span *ngIf=!passwordValidate() style="color:red;">. Retype password correctly.</span>
+                            </span>
+                            <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">  <i class="nc-icon nc-key-25"></i></span>
+                                </div>
+                                <input type="password" class="form-control" [(ngModel)]="pass2" placeholder="Retype Your Password" (focus)="focus1=true" (blur)="focus1=false" >
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- big message box
@@ -99,11 +129,11 @@
 
                     <div class="row">
                         <div class="col-md-4 mr-auto ml-auto">
-                            <a [routerLink]="['/user-profile']"><button class="btn btn-danger btn-lg btn-fill">Confirm Registration</button></a>
+                            <button (click)="createClick()" class="btn btn-danger btn-lg btn-fill">Confirm Registration</button>
                         </div>
                     </div>
 
-                </form>
+                </div>
             </div>
         </div>
     </div>

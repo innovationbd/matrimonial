@@ -6,7 +6,8 @@
                 <div class="row center">
                     <div class="col-lg-4 mr-auto ml-auto">
                       <div class="card card-register">
-                          <h3 class="title">Welcome</h3>
+                          <h3 *ngIf=!isSignedUp() class="title">Welcome</h3>
+                          <h6 *ngIf=isSignedUp() class="title">You Have Successfully Registered! Please Login to Continue.</h6>
                           <div class="social-line text-center">
                               <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
                                   <i class="fa fa-facebook-square"></i>
@@ -37,9 +38,9 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
-                              <a [routerLink]="['/user-profile']"><button class="btn btn-danger btn-block btn-round">Login</button></a>
+                              <a [routerLink]="['/user-profile']"><button (click)="clearSignedUp()" class="btn btn-danger btn-block btn-round">Login</button></a>
                           </form>
                           <div class="forgot">
                               <a href="" class="btn btn-link btn-danger">Forgot password?</a>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -12,13 +12,24 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 
+import {HttpClientModule} from '@angular/common/http';
+import { AdminuserComponent } from './adminuser/adminuser.component';
+import { SharedService } from './shared.service';
+import { MaleuserComponent } from './maleuser/maleuser.component';
+import { FemaleuserComponent } from './femaleuser/femaleuser.component';
+
+import { AuthGuard } from './guards/auth.guard';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AdminuserComponent,
+    MaleuserComponent,
+    FemaleuserComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +39,12 @@ import { ExamplesModule } from './examples/examples.module';
     ComponentsModule,
     ExamplesModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SharedService,
+              AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { ComponentsComponent } from './components/components.component';
 import { ServicesComponent } from './components/services/services.component';
@@ -21,6 +21,11 @@ import { SignupComponent } from './examples/signup/signup.component';
 import { LoginComponent } from './examples/login/login.component';
 import { LandingComponent } from './examples/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { AdminuserComponent } from './adminuser/adminuser.component';
+import { MaleuserComponent } from './maleuser/maleuser.component';
+
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,13 +36,14 @@ const routes: Routes =[
     { path: 'faq',              component: FaqComponent },
     { path: 'donate',           component: DonateComponent },
     { path: 'contact',          component: ContactComponent },
-    { path: 'user-profile',     component: ProfileComponent },
+    { path: 'user-profile',     component: ProfileComponent, canActivate : [AuthGuard] },
     { path: 'edit-profile',     component: EditProfileComponent },
     { path: 'message',          component: MessageComponent },
     { path: 'notification',     component: NotificationComponent },
     { path: 'top-matches',      component: TopMatchesComponent },
     { path: 'view-profile',     component: ViewProfileComponent },
-
+    { path: 'adminuser',        component: AdminuserComponent },
+    { path: 'maleuser',         component: MaleuserComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'login',            component: LoginComponent },
     { path: 'landing',          component: LandingComponent },

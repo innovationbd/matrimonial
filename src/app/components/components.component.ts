@@ -41,5 +41,8 @@ export class ComponentsComponent implements OnInit {
             });
         }
     }
+    isAdmin() {
+      return true;
+    }
 
 }
