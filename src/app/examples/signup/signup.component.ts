@@ -22,7 +22,9 @@ export class SignupComponent implements OnInit {
     pass2="";
 
     constructor(private service:SharedService,
-                private router : Router) { }
+                private router : Router,
+                private _util: UtilService,
+                private _http: HttpService) { }
 
     maleusers: any=  [];
     modalTitle="";
