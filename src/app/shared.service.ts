@@ -11,14 +11,24 @@ readonly APIUrl = "http://127.0.0.1:8000";
 readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
 //readonly PhotoUrl = "https://marufbuet.pythonanywhere.com/media/";
-
+  isLoggedIn:any = [];
+  /*isLoggedIn = [
+      {name: 'apples', quantity: 2},
+      {name: 'bananas', quantity: 0},
+      {name: 'cherries', quantity: 5}
+  ];*/
   constructor(private http:HttpClient) { }
 
   logout() :void {
-   localStorage.setItem('isLoggedIn','false');
-   localStorage.removeItem('token');
+   //localStorage.setItem('isLoggedIn','false');
+   //localStorage.removeItem('token');
+   this.isLoggedIn=false;
    }
-
+  getRandomInt(min, max) {
+     min = Math.ceil(min);
+     max = Math.floor(max);
+     return Math.floor(Math.random() * (max - min + 1)) + min;
+   }
   isAdmin() {
     return false;
   }
@@ -30,34 +40,59 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
   getAdminList(): Observable<any[]> {
     return this.http.get<any[]> (this.APIUrl + '/adminuser');
   }
-
   addAdminUser(val:any) {
     return this.http.post (this.APIUrl + '/adminuser', val);
   }
-
   updateAdminUser(val:any) {
-    return this.http.put (this.APIUrl + '/adminuser', val);
+    return this.http.put (this.APIUrl + '/adminuser/', val);
+  }
+  deleteAdminUser(val:any) {
+    return this.http.delete (this.APIUrl + '/adminuser/' + val);
   }
 
-  deleteAdminUser(val:any) {
-    return this.http.delete (this.APIUrl + '/adminuser' + val);
+  getTempList(): Observable<any[]> {
+    return this.http.get<any[]> (this.APIUrl + '/tempuser');
+  }
+  addTempUser(val:any) {
+    return this.http.post (this.APIUrl + '/tempuser', val);
+  }
+  updateTempUser(val:any) {
+    return this.http.put (this.APIUrl + '/tempuser/', val);
+  }
+  deleteTempUser(val:any) {
+    return this.http.delete (this.APIUrl + '/tempuser/' + val);
   }
 
 
   getMaleUserList(): Observable<any[]> {
     return this.http.get<any[]> (this.APIUrl + '/maleuser');
   }
-
   addMaleUser(val:any) {
     return this.http.post (this.APIUrl + '/maleuser', val);
   }
-
   updateMaleUser(val:any) {
-    return this.http.put (this.APIUrl + '/maleuser', val);
+    return this.http.put (this.APIUrl + '/maleuser/', val);
+  }
+  deleteMaleUser(val:any) {
+    return this.http.delete (this.APIUrl + '/maleuser/' + val);
   }
 
-  deleteMaleUser(val:any) {
-    return this.http.delete (this.APIUrl + '/maleuser' + val);
+  getFemaleUserList(): Observable<any[]> {
+    return this.http.get<any[]> (this.APIUrl + '/femaleuser');
+  }
+  addFemaleUser(val:any) {
+    return this.http.post (this.APIUrl + '/femaleuser', val);
+  }
+  updateFemaleUser(val:any) {
+    return this.http.put (this.APIUrl + '/femaleuser/', val);
+  }
+  deleteFemaleUser(val:any) {
+    return this.http.delete (this.APIUrl + '/femaleuser/' + val);
+  }
+
+
+  sendEmail(val:any) {
+    return this.http.post (this.APIUrl + '/sendmail', val);
   }
 
 

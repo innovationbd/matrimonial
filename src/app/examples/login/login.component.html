@@ -6,8 +6,12 @@
                 <div class="row center">
                     <div class="col-lg-4 mr-auto ml-auto">
                       <div class="card card-register">
-                          <h3 *ngIf=!isSignedUp() class="title">Welcome</h3>
+                          <h3 *ngIf=(!isSignedUp()&&!gotVeriCode()) class="title">Welcome</h3>
                           <h6 *ngIf=isSignedUp() class="title">You Have Successfully Registered! Please Login to Continue.</h6>
+                          <h6 *ngIf=gotVeriCode() class="title">Please enter the verification code sent to your email.</h6>
+
+                          <!-- social text icon
+                            =======================--
                           <div class="social-line text-center">
                               <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
                                   <i class="fa fa-facebook-square"></i>
@@ -18,8 +22,9 @@
                               <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
                                   <i class="fa fa-twitter"></i>
                               </a>
-                          </div>
-                          <form class="register-form">
+                          </div> -->
+                          <div class="register-form">
+                            <div *ngIf=!gotVeriCode()>
                               <label>Email</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -28,7 +33,7 @@
                                   </span>
                                 </div>
 
-                                  <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+                                  <input type="text" [(ngModel)]="userid" (click)="refreshUserList()" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
                               </div>
 
                               <label>Password</label>
@@ -38,11 +43,34 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                  <input type="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
-                              <a [routerLink]="['/user-profile']"><button (click)="clearSignedUp()" class="btn btn-danger btn-block btn-round">Login</button></a>
-                          </form>
-                          <div class="forgot">
+
+
+
+                              <a [routerLink]="['/user-profile']"><button (click)="clickLogin()" class="btn btn-danger btn-block btn-round">Login</button></a>
+                            </div>
+
+                              <div *ngIf=gotVeriCode()>
+                                <label>Enter Verification Code</label>
+                                <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i *ngIf=!verifyEmail() class="nc-icon nc-alert-circle-i"></i>
+                                        <i *ngIf=verifyEmail() style="color:green;" class="nc-icon nc-check-2"></i>
+                                    </span>
+                                  </div>
+
+                                    <input type="text" (click)="refreshTempList()" class="form-control" [(ngModel)]="veriCode" placeholder="Six Digit Code" (focus)="focus=true" (blur)="focus=false" >
+                                </div>
+                                <button (click)="clickVerify()" class="btn btn-danger btn-block btn-round">Verify Email</button>
+                                <p *ngIf=wrongCode style="color:red; text-align:center; font-size:bold;">Wrong Verification Code!</p>
+                                <p style="text-align:center; font-size:bold;">This is</p>
+                              </div>
+
+
+                          </div>
+                          <div *ngIf=!gotVeriCode() class="forgot">
                               <a href="" class="btn btn-link btn-danger">Forgot password?</a>
                               <a [routerLink]="['/signup']" class="btn btn-link">Haven't an Account? Sign Up!</a>
                           </div>

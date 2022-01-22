@@ -32,7 +32,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label>Email</label><span *ngIf=!emailValidate() style="color:red;">. *Please insert your email address.</span>
+                            <label>Email</label>
+                            <span *ngIf=!emailValidate() style="color:red;">. *Please insert your email address.</span>
+
                             <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">  <i class="nc-icon nc-email-85"></i></span>
@@ -48,8 +50,8 @@
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
 
                                 <select [(ngModel)]="Gender" class="form-control" placeholder="Select Your Gender">
-                                  <option value="female">Female
-                                  <option value="male">Male
+                                  <option value="Female">Female
+                                  <option value="Male">Male
                                 </select>
                             </div>
                         </div>
@@ -81,10 +83,10 @@
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
 
                                 <select [(ngModel)]="State" class="form-control">
-                                  <option value="alabama" selected>Alabama
-                                  <option value="newyork">New York
-                                  <option value="california">California
-                                  <option value="texus">Texus
+                                  <option value="Alabama" selected>Alabama
+                                  <option value="Newyork">New York
+                                  <option value="California">California
+                                  <option value="Texus">Texus
                                 </select>
                             </div>
                         </div>
@@ -128,8 +130,11 @@
 
 
                     <div class="row">
+                        <p>{{this.paragraph}}</p>
                         <div class="col-md-4 mr-auto ml-auto">
+
                             <button (click)="createClick()" class="btn btn-danger btn-lg btn-fill">Confirm Registration</button>
+                            <p *ngIf=userAlreadyExist style="color:red; text-align:center;">You have already registered!</p>
                         </div>
                     </div>
 
