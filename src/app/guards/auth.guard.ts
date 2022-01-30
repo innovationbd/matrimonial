@@ -8,8 +8,8 @@ import {SharedService} from 'app/shared.service';
 export class AuthGuard implements CanActivate {
    constructor(private service:SharedService, private router: Router) { }
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-      if (this.service.isLoggedIn) {
-      return true;
+      if (this.service.isloggedin()) {
+        return true;
       }
       // navigate to login page as user is not authenticated
    this.router.navigate(['/login']);

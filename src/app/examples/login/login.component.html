@@ -33,7 +33,7 @@
                                   </span>
                                 </div>
 
-                                  <input type="text" [(ngModel)]="userid" (click)="refreshUserList()" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+                                  <input type="text" [(ngModel)]="userEmail" (click)="refreshUserList()" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
                               </div>
 
                               <label>Password</label>
@@ -48,7 +48,8 @@
 
 
 
-                              <a [routerLink]="['/user-profile']"><button (click)="clickLogin()" class="btn btn-danger btn-block btn-round">Login</button></a>
+                              <button (click)="clickLogin()" class="btn btn-danger btn-block btn-round">Login</button>
+                              <p style="text-align:center; font-size:bold; color:red;">{{errorMessage}}</p>
                             </div>
 
                               <div *ngIf=gotVeriCode()>
@@ -65,7 +66,7 @@
                                 </div>
                                 <button (click)="clickVerify()" class="btn btn-danger btn-block btn-round">Verify Email</button>
                                 <p *ngIf=wrongCode style="color:red; text-align:center; font-size:bold;">Wrong Verification Code!</p>
-                                <p style="text-align:center; font-size:bold;">This is</p>
+                                <p style="text-align:center; font-size:bold;">This {{dummyvar}} is {{OpeningDate}}</p>
                               </div>
 
 
@@ -73,6 +74,7 @@
                           <div *ngIf=!gotVeriCode() class="forgot">
                               <a href="" class="btn btn-link btn-danger">Forgot password?</a>
                               <a [routerLink]="['/signup']" class="btn btn-link">Haven't an Account? Sign Up!</a>
+                              <p (click)="dummyfun()" style="text-align:center; font-size:bold;">This {{dummyvar}} is {{OpeningDate}}</p>
                           </div>
                       </div>
                     </div>

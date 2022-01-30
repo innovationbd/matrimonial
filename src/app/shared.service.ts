@@ -11,23 +11,69 @@ readonly APIUrl = "http://127.0.0.1:8000";
 readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
 //readonly PhotoUrl = "https://marufbuet.pythonanywhere.com/media/";
-  isLoggedIn:any = [];
-  /*isLoggedIn = [
-      {name: 'apples', quantity: 2},
-      {name: 'bananas', quantity: 0},
-      {name: 'cherries', quantity: 5}
-  ];*/
+  currentUser;
+
   constructor(private http:HttpClient) { }
 
   logout() :void {
-   //localStorage.setItem('isLoggedIn','false');
+   localStorage.setItem('isLoggedOut','True');
    //localStorage.removeItem('token');
-   this.isLoggedIn=false;
+
+   }
+   isloggedin() {
+     if(localStorage.getItem('fromloginpage') == "True") {
+       localStorage.removeItem('fromloginpage');
+       return true;
+     }
+     else {
+       if(localStorage.getItem('usertype')=='1') {
+         this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+           this.currentUser = data;
+           var token = this.currentUser.userToken;
+           if(token == localStorage.getItem('usertoken')) {
+             var UserToken = this.getRandomInt(12345678,87654321);
+             localStorage.setItem('usertoken', UserToken);
+             this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+             return true;
+           }
+           else {
+             return false;
+           }
+         });
+       }
+       else if(localStorage.getItem('usertype')=='2') {
+         return this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+           this.currentUser = data;
+           var token = this.currentUser.userToken;
+           if(token == localStorage.getItem('usertoken')) {
+             var UserToken = this.getRandomInt(12345678,87654321);
+             localStorage.setItem('usertoken', UserToken);
+             this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+             return true;
+           }
+           else {
+             return false;
+           }
+         });
+       }
+     }
    }
   getRandomInt(min, max) {
      min = Math.ceil(min);
      max = Math.floor(max);
      return Math.floor(Math.random() * (max - min + 1)) + min;
+   }
+   getDateTime(today=new Date()) {
+     //return datetime in the format '2022-12-22 00:00:04'
+     //database datetime format '2022-01-28T15:07:37Z'
+     //var today = new Date();
+     var dd = String(today.getDate());
+     var mm = String(today.getMonth() + 1); //January is 0!
+     var hh = String(today.getHours());
+     var mn = String(today.getMinutes());
+     var ss = String(today.getSeconds());
+     var yyyy = today.getFullYear();
+     return yyyy+'-'+mm+'-'+dd+' '+hh+':'+mn+':'+ss;
    }
   isAdmin() {
     return false;
@@ -37,14 +83,19 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
     return btoa(btoa(btoa(val)));
   }
 
-  getAdminList(): Observable<any[]> {
-    return this.http.get<any[]> (this.APIUrl + '/adminuser');
+  getAdminList(id=0): Observable<any[]> {
+    if(id==0) {
+      return this.http.get<any[]> (this.APIUrl + '/adminuser');
+    }
+    else {
+      return this.http.get<any[]> (this.APIUrl + '/adminuser/' + id);
+    }
   }
   addAdminUser(val:any) {
     return this.http.post (this.APIUrl + '/adminuser', val);
   }
   updateAdminUser(val:any) {
-    return this.http.put (this.APIUrl + '/adminuser/', val);
+    return this.http.put (this.APIUrl + '/adminuser', val);
   }
   deleteAdminUser(val:any) {
     return this.http.delete (this.APIUrl + '/adminuser/' + val);
@@ -57,34 +108,44 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
     return this.http.post (this.APIUrl + '/tempuser', val);
   }
   updateTempUser(val:any) {
-    return this.http.put (this.APIUrl + '/tempuser/', val);
+    return this.http.put (this.APIUrl + '/tempuser', val);
   }
   deleteTempUser(val:any) {
     return this.http.delete (this.APIUrl + '/tempuser/' + val);
   }
 
 
-  getMaleUserList(): Observable<any[]> {
-    return this.http.get<any[]> (this.APIUrl + '/maleuser');
+  getMaleUserList(id=0): Observable<any[]> {
+    if(id==0) {
+      return this.http.get<any[]> (this.APIUrl + '/maleuser');
+    }
+    else {
+      return this.http.get<any[]> (this.APIUrl + '/maleuser/' + id);
+    }
   }
   addMaleUser(val:any) {
     return this.http.post (this.APIUrl + '/maleuser', val);
   }
   updateMaleUser(val:any) {
-    return this.http.put (this.APIUrl + '/maleuser/', val);
+    return this.http.put (this.APIUrl + '/maleuser', val);
   }
   deleteMaleUser(val:any) {
     return this.http.delete (this.APIUrl + '/maleuser/' + val);
   }
 
-  getFemaleUserList(): Observable<any[]> {
-    return this.http.get<any[]> (this.APIUrl + '/femaleuser');
+  getFemaleUserList(id=0): Observable<any[]> {
+    if(id==0) {
+      return this.http.get<any[]> (this.APIUrl + '/femaleuser');
+    }
+    else {
+      return this.http.get<any[]> (this.APIUrl + '/femaleuser/' + id);
+    }
   }
   addFemaleUser(val:any) {
     return this.http.post (this.APIUrl + '/femaleuser', val);
   }
   updateFemaleUser(val:any) {
-    return this.http.put (this.APIUrl + '/femaleuser/', val);
+    return this.http.put (this.APIUrl + '/femaleuser', val);
   }
   deleteFemaleUser(val:any) {
     return this.http.delete (this.APIUrl + '/femaleuser/' + val);

@@ -79,6 +79,7 @@ export class SignupComponent implements OnInit {
     createClick(){
 
          this.userAlreadyExist = false;
+         this.status = true;
          if(this.FullName==null) { this.FullName=""; this.status=false; }
          if(this.Email==null) { this.Email=""; this.status=false; }
          if(this.Gender==null) { this.Gender=""; this.status=false; }
@@ -87,11 +88,6 @@ export class SignupComponent implements OnInit {
          if(this.preRegistered()) { this.userAlreadyExist = true; this.status=false;}
 
          if(!this.status) { return false; }
-
-        var today = new Date();
-        var dd = String(today.getDate());
-        var mm = String(today.getMonth() + 1); //January is 0!
-        var yyyy = today.getFullYear();
 
         var dateBirth=null;
         if(this.DateOfBirth != null) { dateBirth = this.DateOfBirth.year+'-'+this.DateOfBirth.month+'-'+this.DateOfBirth.day; }
@@ -105,7 +101,7 @@ export class SignupComponent implements OnInit {
         tempDateOfBirth:dateBirth,
         tempVeriCode:this.code,
         tempPass:this.UserPass,
-        tempDate:yyyy + '-' + mm + '-' + dd
+        tempDateTime:this.service.getDateTime()
         };
 
         this.service.addTempUser(val).subscribe(res=>{

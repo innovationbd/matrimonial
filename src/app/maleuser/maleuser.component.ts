@@ -95,7 +95,7 @@ export class MaleuserComponent implements OnInit {
   MatchShowLimit=5;
   UserPass=null;
   Status=null;
-  //#OpeningDate:number = Date.now();
+  //OpeningDate:number = Date.now();
   OpeningDate=null;
   LastEdit=null;
 
@@ -116,8 +116,8 @@ export class MaleuserComponent implements OnInit {
       this.MaleId=0;;
       this.MatchShowLimit=5;
       this.Status="Inactive";
-      this.OpeningDate='0001-01-11 00:00:00.000000';
-      this.LastEdit='0001-01-11 00:00:00.000000';
+      this.OpeningDate='2022-12-22 00:00:04';
+      this.LastEdit='2022-12-22 00:00:04';
 
     }
 

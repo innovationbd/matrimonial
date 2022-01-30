@@ -20,11 +20,13 @@ export class LoginComponent implements OnInit {
   wrongCode = false;
   gotTempList = false;
   gotUserList = false;
-  userid="";
+  userEmail="";
   password="";
   UserList:any = [];
   MaleUserList:any = [];
   FemaleUserList:any = [];
+  dummyvar="";
+  errorMessage="";
 
 
   constructor(private service:SharedService,
@@ -44,97 +46,20 @@ export class LoginComponent implements OnInit {
   }
   clickLogin() {
     if(this.loginValidate()) {
-      var userToken = this.service.mEncrypt(this.service.getRandomInt(1234567,7654321));
-      var val={
-        /*fullName:this.currentUser.fullName,
-        nickName:this.currentUser.nickName,
-        gender:this.currentUser.gender,
-        address:this.currentUser.ddress,
-        city:this.currentUser.city,
-        state:this.currentUser.state,
-        zip:this.currentUser.zip,
-        cellPhone:this.currentUser.cellPhone,
-        workPhone:this.currentUser.workPhone,
-        homePhone:this.currentUser.homePhone,
-        email:this.currentUser.tempEmail,
-        personalWebsite:this.PersonalWebsite,
-        age:this.Age,
-        dateOfBirth:this.currentUser.tempDateOfBirth,
-        height:this.Height,
-        weight:this.Weight,
-        placeOfBirth:this.PlaceOfBirth,
-        health:this.Health,
-        maritalStatus:this.MaritalStatus,
-        children:this.Children,
-        childrenNumber:this.ChildrenNumber,
-        childrenAges:this.ChildrenAges,
-        immigrationStatus:this.ImmigrationStatus,
-        highSchool:this.HighSchool,
-        highSchoolYear:this.HighSchoolYear,
-        bachelors:this.Bachelors,
-        bachelorsYear:this.BachelorsYear,
-        masters:this.Masters,
-        mastersYear:this.MastersYear,
-        doctorate:this.Doctorate,
-        doctorateYear:this.DoctorateYear,
-        otherDegree:this.OtherDegree,
-        otherDegreeYear:this.OtherDegreeYear,
-        employed:this.Employed,
-        employment:this.Employment,
-        position:this.Position,
-        income:this.Income,
-        religiousPractice:this.ReligiousPractice,
-        religiousPracticeBrief:this.ReligiousPracticeBrief,
-        revertTime:this.RevertTime,
-        beard:this.Beard,
-        smoker:this.Smoker,
-        preReligious:this.PreReligious,
-        preReligiousBrief:this.PreReligiousBrief,
-        preWear:this.PreWear,
-        preSmoking:this.PreSmoking,
-        preEthnic:this.PreEthnic,
-        preEthnicSpecific:this.PreEthnicSpecific,
-        preImmigrationStatus:this.PreImmigrationStatus,
-        preMaritalStatus:this.PreMaritalStatus,
-        preChildren:this.PreChildren,
-        preEducation:this.PreEducation,
-        preEmployment:this.PreEmployment,
-        preIncome:this.PreIncome,
-        preAgeGap:this.PreAgeGap,
-        guarName:this.GuarName,
-        guarAddress:this.GuarAddress,
-        guarCity:this.GuarCity,
-        guarState:this.GuarState,
-        guarCountry:this.GuarCountry,
-        guarPhone:this.GuarPhone,
-        guarEmail:this.GuarEmail,
-        guarProfession:this.GuarProfession,
-        familyBrief:this.FamilyBrief,
-        refName1:this.RefName1,
-        refRelation1:this.RefRelation1,
-        refPhone1:this.RefPhone1,
-        refName2:this.RefName2,
-        refRelation2:this.RefRelation2,
-        refPhone2:this.RefPhone2,
-        refName3:this.RefName3,
-        refRelation3:this.RefRelation3,
-        refPhone3:this.RefPhone3,
-        photo:this.Photo,
-        cv:this.Cv,
-        album:this.Album,
-        govIssuedId:this.GovIssuedId,
-        matchShowLimit:this.MatchShowLimit,
-        userPass:this.currentUser.tempPass,
-        status:this.Status,
-        openingDate:this.OpeningDate,
-        lastEdit:this.LastEdit,*/
-        userToken:userToken
-      };
-      this.service.updateMaleUser(val).subscribe(res=>{
-        alert(res.toString());
-      });
-      this.service.isLoggedIn = true;
       localStorage.removeItem('isSignedUp');
+      var UserToken = this.service.getRandomInt(12345678,87654321);
+      localStorage.setItem('usertoken', UserToken);
+      localStorage.setItem('userid', this.currentUser.userId);
+      if(this.currentUser.gender == 'Male') {
+        this.service.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+        localStorage.setItem('usertype', '1');
+      }
+      else {
+        this.service.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+        localStorage.setItem('usertype', '2');
+      }
+      localStorage.setItem('fromloginpage', 'True');
+      this.router.navigate(['/user-profile']);
     }
   }
   refreshUserList() {
@@ -149,11 +74,19 @@ export class LoginComponent implements OnInit {
     }
   }
   loginValidate() {
-    this.UserList = [this.MaleUserList, this.FemaleUserList];
-    this.currentUser = this.UserList.find(e => e.email == this.userid)
-    if(this.currentUser == null) { return false; }
-    if(this.service.mEncrypt(this.currentUser.userPass) == this.service.mEncrypt(this.password)) { return true; }
-    else { return false; }
+    this.currentUser = this.MaleUserList.find(e => e.email == this.userEmail)
+    if(this.currentUser == null) {
+      this.currentUser = this.FemaleUserList.find(e => e.email == this.userEmail)
+      if(this.currentUser == null) {
+        this.errorMessage = "Your Email is not Registered. Please Sign Up First."
+        return false;
+      }
+    }
+    if(this.currentUser.userPass == this.service.mEncrypt(this.password)) { return true; }
+    else {
+      this.errorMessage = "Invalid Email or Password or Both"
+      return false;
+    }
   }
 
   refreshTempList() {
@@ -175,88 +108,16 @@ export class LoginComponent implements OnInit {
     if(this.currentUser.tempGender == "Male") {
       var valM={
         fullName:this.currentUser.tempName,
-        nickName:this.NickName,
         gender:this.currentUser.tempGender,
-        address:this.Address,
-        city:this.City,
         state:this.currentUser.tempState,
-        zip:this.Zip,
         cellPhone:this.currentUser.tempCellPhone,
-        workPhone:this.WorkPhone,
-        homePhone:this.HomePhone,
         email:this.currentUser.tempEmail,
-        personalWebsite:this.PersonalWebsite,
-        age:this.Age,
         dateOfBirth:this.currentUser.tempDateOfBirth,
-        height:this.Height,
-        weight:this.Weight,
-        placeOfBirth:this.PlaceOfBirth,
-        health:this.Health,
-        maritalStatus:this.MaritalStatus,
-        children:this.Children,
-        childrenNumber:this.ChildrenNumber,
-        childrenAges:this.ChildrenAges,
-        immigrationStatus:this.ImmigrationStatus,
-        highSchool:this.HighSchool,
-        highSchoolYear:this.HighSchoolYear,
-        bachelors:this.Bachelors,
-        bachelorsYear:this.BachelorsYear,
-        masters:this.Masters,
-        mastersYear:this.MastersYear,
-        doctorate:this.Doctorate,
-        doctorateYear:this.DoctorateYear,
-        otherDegree:this.OtherDegree,
-        otherDegreeYear:this.OtherDegreeYear,
-        employed:this.Employed,
-        employment:this.Employment,
-        position:this.Position,
-        income:this.Income,
-        religiousPractice:this.ReligiousPractice,
-        religiousPracticeBrief:this.ReligiousPracticeBrief,
-        revertTime:this.RevertTime,
-        beard:this.Beard,
-        smoker:this.Smoker,
-        preReligious:this.PreReligious,
-        preReligiousBrief:this.PreReligiousBrief,
-        preWear:this.PreWear,
-        preSmoking:this.PreSmoking,
-        preEthnic:this.PreEthnic,
-        preEthnicSpecific:this.PreEthnicSpecific,
-        preImmigrationStatus:this.PreImmigrationStatus,
-        preMaritalStatus:this.PreMaritalStatus,
-        preChildren:this.PreChildren,
-        preEducation:this.PreEducation,
-        preEmployment:this.PreEmployment,
-        preIncome:this.PreIncome,
-        preAgeGap:this.PreAgeGap,
-        guarName:this.GuarName,
-        guarAddress:this.GuarAddress,
-        guarCity:this.GuarCity,
-        guarState:this.GuarState,
-        guarCountry:this.GuarCountry,
-        guarPhone:this.GuarPhone,
-        guarEmail:this.GuarEmail,
-        guarProfession:this.GuarProfession,
-        familyBrief:this.FamilyBrief,
-        refName1:this.RefName1,
-        refRelation1:this.RefRelation1,
-        refPhone1:this.RefPhone1,
-        refName2:this.RefName2,
-        refRelation2:this.RefRelation2,
-        refPhone2:this.RefPhone2,
-        refName3:this.RefName3,
-        refRelation3:this.RefRelation3,
-        refPhone3:this.RefPhone3,
-        photo:this.Photo,
-        cv:this.Cv,
-        album:this.Album,
-        govIssuedId:this.GovIssuedId,
-        matchShowLimit:this.MatchShowLimit,
+        matchShowLimit:5,
         userPass:this.currentUser.tempPass,
-        status:this.Status,
-        openingDate:this.OpeningDate,
-        lastEdit:this.LastEdit,
-        userToken:null
+        status:"Inactive",
+        openingDate:this.service.getDateTime(),
+        lastEdit:this.service.getDateTime()
       };
       this.service.addMaleUser(valM).subscribe(res=>{
         alert(res.toString());
@@ -265,88 +126,16 @@ export class LoginComponent implements OnInit {
     else {
       var valF={
         fullName:this.currentUser.tempName,
-        nickName:this.NickName,
         gender:this.currentUser.tempGender,
-        address:this.Address,
-        city:this.City,
         state:this.currentUser.tempState,
-        zip:this.Zip,
         cellPhone:this.currentUser.tempCellPhone,
-        workPhone:this.WorkPhone,
-        homePhone:this.HomePhone,
         email:this.currentUser.tempEmail,
-        personalWebsite:this.PersonalWebsite,
-        age:this.Age,
         dateOfBirth:this.currentUser.tempDateOfBirth,
-        height:this.Height,
-        weight:this.Weight,
-        placeOfBirth:this.PlaceOfBirth,
-        health:this.Health,
-        maritalStatus:this.MaritalStatus,
-        children:this.Children,
-        childrenNumber:this.ChildrenNumber,
-        childrenAges:this.ChildrenAges,
-        immigrationStatus:this.ImmigrationStatus,
-        highSchool:this.HighSchool,
-        highSchoolYear:this.HighSchoolYear,
-        bachelors:this.Bachelors,
-        bachelorsYear:this.BachelorsYear,
-        masters:this.Masters,
-        mastersYear:this.MastersYear,
-        doctorate:this.Doctorate,
-        doctorateYear:this.DoctorateYear,
-        otherDegree:this.OtherDegree,
-        otherDegreeYear:this.OtherDegreeYear,
-        employed:this.Employed,
-        employment:this.Employment,
-        position:this.Position,
-        income:this.Income,
-        religiousPractice:this.ReligiousPractice,
-        religiousPracticeBrief:this.ReligiousPracticeBrief,
-        revertTime:this.RevertTime,
-        wear:this.Wear,
-        smoker:this.Smoker,
-        preReligious:this.PreReligious,
-        preReligiousBrief:this.PreReligiousBrief,
-        preBeard:this.preBeard,
-        preSmoking:this.PreSmoking,
-        preEthnic:this.PreEthnic,
-        preEthnicSpecific:this.PreEthnicSpecific,
-        preImmigrationStatus:this.PreImmigrationStatus,
-        preMaritalStatus:this.PreMaritalStatus,
-        preChildren:this.PreChildren,
-        preEducation:this.PreEducation,
-        preEmployment:this.PreEmployment,
-        preIncome:this.PreIncome,
-        preAgeGap:this.PreAgeGap,
-        guarName:this.GuarName,
-        guarAddress:this.GuarAddress,
-        guarCity:this.GuarCity,
-        guarState:this.GuarState,
-        guarCountry:this.GuarCountry,
-        guarPhone:this.GuarPhone,
-        guarEmail:this.GuarEmail,
-        guarProfession:this.GuarProfession,
-        familyBrief:this.FamilyBrief,
-        refName1:this.RefName1,
-        refRelation1:this.RefRelation1,
-        refPhone1:this.RefPhone1,
-        refName2:this.RefName2,
-        refRelation2:this.RefRelation2,
-        refPhone2:this.RefPhone2,
-        refName3:this.RefName3,
-        refRelation3:this.RefRelation3,
-        refPhone3:this.RefPhone3,
-        photo:this.Photo,
-        cv:this.Cv,
-        album:this.Album,
-        govIssuedId:this.GovIssuedId,
-        matchShowLimit:this.MatchShowLimit,
+        matchShowLimit:5,
         userPass:this.currentUser.tempPass,
-        status:this.Status,
-        openingDate:this.OpeningDate,
-        lastEdit:this.LastEdit,
-        userToken:null
+        status:"Inactive",
+        openingDate:this.service.getDateTime(),
+        lastEdit:this.service.getDateTime()
       };
       this.service.addFemaleUser(valF).subscribe(res=>{
         alert(res.toString());
@@ -361,100 +150,20 @@ export class LoginComponent implements OnInit {
     //this.router.navigate(['/login']);
   }
 
+
+  /*isgreater() {
+    this.OpeningDate='0001-01-11 00:00:00';
+    this.LastEdit='0001-01-11 00:00:03';
+    if(this.OpeningDate > this.LastEdit) {
+      this.dummyvar="It Works";
+    }
+    else { this.dummyvar="It doesn't work. "; }
+    return true;
+  }*/
+
 /*  createClick(){
 
-       if(this.FullName==null) { this.FullName=""; this.status=false; }
-       if(this.Email==null) { this.Email=""; this.status=false; }
-       if(this.Gender==null) { this.Gender=""; this.status=false; }
-       if(this.pass1==null) { this.pass1=""; this.status=false; }
-       if(!this.passMatched()) { this.passMisMatched = true; this.status=false; }
-       if(!this.status) { return false; }
 
-
-      var val={
-      fullName:this.FullName,
-      nickName:this.NickName,
-      gender:this.Gender,
-      address:this.Address,
-      city:this.City,
-      state:this.State,
-      zip:this.Zip,
-      cellPhone:this.CellPhone,
-      workPhone:this.WorkPhone,
-      homePhone:this.HomePhone,
-      email:this.Email,
-      personalWebsite:this.PersonalWebsite,
-      age:this.Age,
-      dateOfBirth:this.DateOfBirth.year+'-'+this.DateOfBirth.month+'-'+this.DateOfBirth.day,
-      height:this.Height,
-      weight:this.Weight,
-      placeOfBirth:this.PlaceOfBirth,
-      health:this.Health,
-      maritalStatus:this.MaritalStatus,
-      children:this.Children,
-      childrenNumber:this.ChildrenNumber,
-      childrenAges:this.ChildrenAges,
-      immigrationStatus:this.ImmigrationStatus,
-      highSchool:this.HighSchool,
-      highSchoolYear:this.HighSchoolYear,
-      bachelors:this.Bachelors,
-      bachelorsYear:this.BachelorsYear,
-      masters:this.Masters,
-      mastersYear:this.MastersYear,
-      doctorate:this.Doctorate,
-      doctorateYear:this.DoctorateYear,
-      otherDegree:this.OtherDegree,
-      otherDegreeYear:this.OtherDegreeYear,
-      employed:this.Employed,
-      employment:this.Employment,
-      position:this.Position,
-      income:this.Income,
-      religiousPractice:this.ReligiousPractice,
-      religiousPracticeBrief:this.ReligiousPracticeBrief,
-      revertTime:this.RevertTime,
-      beard:this.Beard,
-      smoker:this.Smoker,
-      preReligious:this.PreReligious,
-      preReligiousBrief:this.PreReligiousBrief,
-      preWear:this.PreWear,
-      preSmoking:this.PreSmoking,
-      preEthnic:this.PreEthnic,
-      preEthnicSpecific:this.PreEthnicSpecific,
-      preImmigrationStatus:this.PreImmigrationStatus,
-      preMaritalStatus:this.PreMaritalStatus,
-      preChildren:this.PreChildren,
-      preEducation:this.PreEducation,
-      preEmployment:this.PreEmployment,
-      preIncome:this.PreIncome,
-      preAgeGap:this.PreAgeGap,
-      guarName:this.GuarName,
-      guarAddress:this.GuarAddress,
-      guarCity:this.GuarCity,
-      guarState:this.GuarState,
-      guarCountry:this.GuarCountry,
-      guarPhone:this.GuarPhone,
-      guarEmail:this.GuarEmail,
-      guarProfession:this.GuarProfession,
-      familyBrief:this.FamilyBrief,
-      refName1:this.RefName1,
-      refRelation1:this.RefRelation1,
-      refPhone1:this.RefPhone1,
-      refName2:this.RefName2,
-      refRelation2:this.RefRelation2,
-      refPhone2:this.RefPhone2,
-      refName3:this.RefName3,
-      refRelation3:this.RefRelation3,
-      refPhone3:this.RefPhone3,
-      photo:this.Photo,
-      cv:this.Cv,
-      album:this.Album,
-      govIssuedId:this.GovIssuedId,
-      matchShowLimit:this.MatchShowLimit,
-      userPass:this.UserPass,
-      status:this.Status,
-      openingDate:this.OpeningDate,
-      lastEdit:this.LastEdit
-      };
 
       localStorage.setItem('isSignedUp', "true");
       this.router.navigate(['/login']);
@@ -474,7 +183,7 @@ export class LoginComponent implements OnInit {
         alert(res.toString());
       });
     }
-*/
+
 
   //fields of user table
   maleusers: any=  [];
@@ -569,8 +278,10 @@ export class LoginComponent implements OnInit {
   MatchShowLimit=5;
   UserPass=null;
   Status=null;
-  //#OpeningDate:number = Date.now();
-  OpeningDate=null;
-  LastEdit=null;
+  OpeningDate = this.service.getDateTime();
+  //OpeningDate=null;
+  LastEdit=null;*/
+
+
 
 }
