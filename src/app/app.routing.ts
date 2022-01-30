@@ -36,7 +36,7 @@ const routes: Routes =[
     { path: 'faq',              component: FaqComponent },
     { path: 'donate',           component: DonateComponent },
     { path: 'contact',          component: ContactComponent },
-    { path: 'user-profile',     component: ProfileComponent, canActivate : [AuthGuard] },
+    { path: 'user-profile',     component: ProfileComponent}, //canActivate : [AuthGuard] },
     { path: 'edit-profile',     component: EditProfileComponent },
     { path: 'message',          component: MessageComponent },
     { path: 'notification',     component: NotificationComponent },

@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('usertype', '2');
       }
       localStorage.setItem('fromloginpage', 'True');
+      localStorage.setItem('isLoggedOut','False');
       this.router.navigate(['/user-profile']);
     }
   }

@@ -55,7 +55,7 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" [routerLink]="['/adminuser']">Admin User</a>
                           <a class="dropdown-item" [routerLink]="['/maleuser']">Male User</a>
-                          <a class="dropdown-item" [routerLink]="['/login']">Log Out</a>
+                          <a (click)="logout()" class="dropdown-item" [routerLink]="['/login']">Log Out</a>
                       </div>
                   </div>
               </li>

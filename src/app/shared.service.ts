@@ -12,17 +12,18 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
 //readonly PhotoUrl = "https://marufbuet.pythonanywhere.com/media/";
   currentUser;
+  checked = false;
 
   constructor(private http:HttpClient) { }
 
-  logout() :void {
-   localStorage.setItem('isLoggedOut','True');
-   //localStorage.removeItem('token');
 
-   }
    isloggedin() {
-     if(localStorage.getItem('fromloginpage') == "True") {
+     if(localStorage.getItem('isLoggedOut') == "True") {
+       return false;
+     }
+     else if(localStorage.getItem('fromloginpage') == "True") {
        localStorage.removeItem('fromloginpage');
+       localStorage.setItem('status', 'truefromloginpage');
        return true;
      }
      else {
@@ -34,30 +35,40 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
              var UserToken = this.getRandomInt(12345678,87654321);
              localStorage.setItem('usertoken', UserToken);
              this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+             localStorage.setItem('status', 'truemaleuser');
              return true;
            }
            else {
+             localStorage.setItem('status', 'falsemaleuser');
              return false;
            }
+           this.checked = true;
          });
+
        }
        else if(localStorage.getItem('usertype')=='2') {
-         return this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+         this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
            this.currentUser = data;
            var token = this.currentUser.userToken;
            if(token == localStorage.getItem('usertoken')) {
              var UserToken = this.getRandomInt(12345678,87654321);
              localStorage.setItem('usertoken', UserToken);
              this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+             localStorage.setItem('status', 'truefemaleuser');
+             localStorage.setItem('return', 'True');
              return true;
            }
            else {
+             localStorage.setItem('status', 'falsefemaleuser');
              return false;
            }
+           this.checked = true;
          });
+
        }
      }
    }
+
   getRandomInt(min, max) {
      min = Math.ceil(min);
      max = Math.floor(max);
