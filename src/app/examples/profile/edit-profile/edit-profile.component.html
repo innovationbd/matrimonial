@@ -24,13 +24,13 @@
         <div class="row">
           <div class="col-sm-5">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter Your Full Name" id="fullName">
+                <input type="text" [(ngModel)]="currentUser.fullName" class="form-control" placeholder="Enter Your Full Name" id="fullName">
                 <label for="fullName">Full Name</label>
             </div>
           </div>
             <div class="col-sm-3">
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Enter Your Nickname(s)" id="nickname">
+                    <input type="text" [(ngModel)]="currentUser.nickName" class="form-control" placeholder="Enter Your Nickname(s)" id="nickname">
                     <label for="nickname">Nickname(s)</label>
                 </div>
             </div>
@@ -40,7 +40,7 @@
               <div class="col-sm-4">
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked="">
+                    <input [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="male" value="Male">
                     Male
                     <span class="form-check-sign"></span>
                   </label>
@@ -49,7 +49,7 @@
               <div class="col-sm-4">
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female" >
+                    <input [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="female" value="Female" >
                     Female
                     <span class="form-check-sign"></span>
                   </label>
@@ -62,7 +62,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group form-floating">
-                <textarea class="form-control" placeholder="Enter Your Full Address" id="address"></textarea>
+                <textarea [(ngModel)]="currentUser.address" class="form-control" placeholder="Enter Your Full Address" id="address"></textarea>
                 <label for="address">Address</label>
             </div>
           </div>
@@ -71,24 +71,21 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter City You Live in" id="city">
+                <input type="text" [(ngModel)]="currentUser.city" class="form-control" placeholder="Enter City You Live in" id="city">
                 <label for="city">City</label>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
-                <select ng-model="myVar" class="form-select" id="state">
-                  <option value="alabama">Alabama
-                  <option value="newyork">New York
-                  <option value="california">California
-                  <option value="texus">Texus
+                <select [(ngModel)]="currentUser.state" class="form-select" id="state">
+                  <option *ngFor="let state of STATES" value={{state.State}}>{{state.State}}</option>
                 </select>
                 <label for="state">State</label>
             </div>
           </div>
             <div class="col-sm-4">
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Enter ZIP Code" id="zip">
+                    <input type="text" [(ngModel)]="currentUser.zip" class="form-control" placeholder="Enter ZIP Code" id="zip">
                     <label for="zip">ZIP Code</label>
                 </div>
             </div>
@@ -97,19 +94,19 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Cell Phone Number" id="cellPhone">
+                <input type="text" [(ngModel)]="currentUser.cellPhone" class="form-control" placeholder="Cell Phone Number" id="cellPhone">
                 <label for="cellPhone">Cell Phone</label>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Work Phone" id="workPhone">
+                <input type="text" [(ngModel)]="currentUser.workPhone" class="form-control" placeholder="Work Phone" id="workPhone">
                 <label for="workPhone">Work Phone</label>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Home Phone" id="homePhone">
+                <input type="text" [(ngModel)]="currentUser.homePhone" class="form-control" placeholder="Home Phone" id="homePhone">
                 <label for="homePhone">Home Phone</label>
             </div>
           </div>
@@ -118,13 +115,13 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter Your Email" id="email">
+                <input type="text" [(ngModel)]="currentUser.email" class="form-control" placeholder="Enter Your Email" id="email">
                 <label for="email">Email</label>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Personal Website (if any)" id="personalWebsite">
+                <input type="text" [(ngModel)]="currentUser.personalWebsite" class="form-control" placeholder="Personal Website (if any)" id="personalWebsite">
                 <label for="personalWebsite">Personal Website</label>
             </div>
           </div>
@@ -132,33 +129,28 @@
 
         <div class="row">
           <div class="col-sm-3">
-            <div class="form-group form-floating input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                <input class="form-control" placeholder="yyyy-mm-dd"
-                     name="dp" id="dateOfBirth" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true" (blur)="focus=false" />
-                <div class="input-group-append">
-                    <span class="glyphicon glyphicon-calendar input-group-text">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </span>
-                </div>
+            <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                <input *ngIf=getAge() class="form-control" [(ngModel)]="currentUser.dateOfBirth"
+                     name="dp" id="dateOfBirth" type="date" />
                 <label for="dateOfBirth">Date of Birth</label>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Enter Your Age (integer)" id="age">
+                <input type="text" [ngModel]="currentUser.age" class="form-control" placeholder="Enter Your Age (integer)" id="age">
                 <label for="age">Age</label>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Height" id="height">
-                <label for="height">Height (kg)</label>
+                <input type="text" [(ngModel)]="currentUser.height" class="form-control" placeholder="Height" id="height">
+                <label for="height">Height (cm)</label>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Weight" id="weight">
-                <label for="weight">Weight (inch)</label>
+                <input type="text" [(ngModel)]="currentUser.weight" class="form-control" placeholder="Weight" id="weight">
+                <label for="weight">Weight (kg)</label>
             </div>
           </div>
         </div>
@@ -166,13 +158,13 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Place of Birth" id="placeOfBirth">
+                <input type="text" [(ngModel)]="currentUser.placeOfBirth" class="form-control" placeholder="Place of Birth" id="placeOfBirth">
                 <label for="placeOfBirth">Place of Birth (State, Province, District, Country)</label>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="health conditions" id="health">
+                <input type="text" [(ngModel)]="currentUser.health" class="form-control" placeholder="health conditions" id="health">
                 <label for="health">Please disclose any health conditions, allergies, or disabilities, if any</label>
             </div>
           </div>
@@ -184,21 +176,21 @@
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="maritalStatus" id="single" value="Single" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.maritalStatus" name="maritalStatus" id="single" value="Single" checked="">
                   Single
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="maritalStatus" id="divorced" value="Divorced" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.maritalStatus" name="maritalStatus" id="divorced" value="Divorced" >
                   Divorced
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="maritalStatus" id="widowed" value="Widowed" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.maritalStatus" name="maritalStatus" id="widowed" value="Widowed" >
                   Widowed
                   <span class="form-check-sign"></span>
                 </label>
@@ -211,14 +203,14 @@
             <br>
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="children" id="no" value="no" checked="">
+                    <input class="form-check-input" type="radio" [(ngModel)]="currentUser.children" name="children" id="no" value="No" checked="">
                     No
                     <span class="form-check-sign"></span>
                   </label>
                 </div>
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="children" id="yes" value="yes" >
+                    <input class="form-check-input" type="radio" [(ngModel)]="currentUser.children" name="children" id="yes" value="Yes" >
                     Yes
                     <span class="form-check-sign"></span>
                   </label>
@@ -227,13 +219,13 @@
 
           <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="How many Children?" id="childrenNumber">
+                <input type="text" [(ngModel)]="currentUser.childrenNumber" class="form-control" placeholder="How many Children?" id="childrenNumber">
                 <label for="childrenNumber">How many Children?</label>
             </div>
           </div>
             <div class="col-sm-6">
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="What are their Ages?" id="childrenAges">
+                    <input type="text" [(ngModel)]="currentUser.childrenAges" class="form-control" placeholder="What are their Ages?" id="childrenAges">
                     <label for="childrenAges">What are their Ages?</label>
                 </div>
             </div>
@@ -245,29 +237,29 @@
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="immigrationStatus" id="UScitizen" value="UScitizen" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="UScitizen" value="US Citizen" >
                   US Citizen
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="immigrationStatus" id="permanentResident" value="permanentResident" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="permanentResident" value="Permanent Resident" >
                   Permanent Resident
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="immigrationStatus" id="other" value="other" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="other" value="Other">
                   Other
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
             <div class="col-sm-6">
-                <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="What are their Ages?" id="immigrationStatusOther">
+                <div class="form-group form-floating" *ngIf=imStatusOther()>
+                    <input type="text" [(ngModel)]="currentUser.immigrationStatusOther" class="form-control" placeholder="What are their Ages?" id="immigrationStatusOther">
                     <label for="immigrationStatusOther">If Other, please specify</label>
                 </div>
             </div>
@@ -915,7 +907,7 @@ Personal Information
       <div class="col-md-9 ml-auto mr-auto" >
       </div>
       <div class="col-md-3">
-          <a [routerLink]="['/edit-profile']"><button class="btn btn-success btn-block btn-lg btn-fill">Save</button></a>
+          <button (click)=clickSave() class="btn btn-success btn-block btn-lg btn-fill">Save</button>
       </div>
   </div>
 </div>

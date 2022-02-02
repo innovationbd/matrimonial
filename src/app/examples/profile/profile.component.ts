@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedService} from 'app/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -8,8 +10,24 @@ import { Component, OnInit } from '@angular/core';
 
 export class ProfileComponent implements OnInit {
 
-    constructor() { }
+    constructor(private service:SharedService, private router : Router) { }
+    maleUser;
+    femaleUser;
+    currentUser;
+    userId;
+    val = false;
+    ngOnInit() {
+      
+    }
 
-    ngOnInit() {}
+    islogin() {
+      if (this.userId == localStorage.getItem('userid')) {
+        return true;
+      }
+      else {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    }
 
 }

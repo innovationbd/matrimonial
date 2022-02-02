@@ -1,4 +1,4 @@
-
+<div>
 <app-profile-home></app-profile-home>
 
 <div class="row">
@@ -14,6 +14,11 @@
         <h6 class="description">Profile Completeness</h6>
         <ngb-progressbar type="success" class="mt-0" [value]="25" [striped]="true" [animated]="true"><i>25%</i></ngb-progressbar><br>
         <p>Your profile is not complete yet. To see who best matches you, please complete your profile.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ml-auto mr-auto text-center">
+            <button [routerLink]="['/edit-profile']" type="button" class="btn btn-outline-danger btn-round">Complete Profile</button>
+        </div>
     </div>
 </div>
 
@@ -109,4 +114,5 @@
 
         </ngb-tabset>
     </div>
+</div>
 </div>

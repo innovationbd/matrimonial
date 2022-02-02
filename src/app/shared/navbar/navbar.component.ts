@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = false;
     }
 
-    currentUser;
+    userName;
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
@@ -99,7 +99,9 @@ export class NavbarComponent implements OnInit {
         }
     }
     isLoggedin() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+      this.userName = localStorage.getItem('username');
+      return this.service.loggedin();
+      /*var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 1 );
       }
@@ -108,26 +110,9 @@ export class NavbarComponent implements OnInit {
         }
         else {
             return false;
-        }
+        }*/
     }
     logout() :void {
-       if(localStorage.getItem('usertype')=='1') {
-         this.service.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-           this.currentUser = data;
-           var UserToken = this.service.getRandomInt(12345678,87654321);
-           this.service.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-         });
-       }
-       else if(localStorage.getItem('usertype')=='2') {
-         this.service.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-           this.service.currentUser = data;
-           var UserToken = this.service.getRandomInt(12345678,87654321);
-           this.service.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-         });
-       }
-       localStorage.removeItem('usertype');
-       localStorage.removeItem('usertoken');
-       localStorage.removeItem('userid');
-       localStorage.setItem('isLoggedOut','True');
+       this.service.logout();
      }
 }

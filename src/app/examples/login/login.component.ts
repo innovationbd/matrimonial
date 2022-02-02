@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {SharedService} from 'app/shared.service';
+
 import { ILogin } from 'app/interfaces/login';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {SharedService} from 'app/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  constructor(private service:SharedService,
+              private router : Router
+              ) { }
   test : Date = new Date();
   focus;
   focus1;
@@ -29,9 +34,7 @@ export class LoginComponent implements OnInit {
   errorMessage="";
 
 
-  constructor(private service:SharedService,
-              private router : Router
-              ) { }
+
 
   ngOnInit(): void {
   }
@@ -60,6 +63,8 @@ export class LoginComponent implements OnInit {
       }
       localStorage.setItem('fromloginpage', 'True');
       localStorage.setItem('isLoggedOut','False');
+      localStorage.setItem('username',this.currentUser.fullName);
+      localStorage.setItem('userage',this.currentUser.age);
       this.router.navigate(['/user-profile']);
     }
   }
