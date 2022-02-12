@@ -19,6 +19,9 @@ import { MaleuserComponent } from './maleuser/maleuser.component';
 import { FemaleuserComponent } from './femaleuser/femaleuser.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { AdminpanelComponent } from './adminuser/adminpanel/adminpanel.component';
+import { DashboardComponent } from './adminuser/dashboard/dashboard.component';
+import { InboxComponent } from './adminuser/inbox/inbox.component';
 
 
 
@@ -29,7 +32,10 @@ import { AuthGuard } from './guards/auth.guard';
     FooterComponent,
     AdminuserComponent,
     MaleuserComponent,
-    FemaleuserComponent
+    FemaleuserComponent,
+    AdminpanelComponent,
+    DashboardComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,

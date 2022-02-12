@@ -43,6 +43,7 @@ export class SignupComponent implements OnInit {
     code = this.service.getRandomInt(123456,987654);
     regedEmail;
     userAlreadyExist = false;
+    STATES = this.service.STATES;
 
     ngOnInit() {
       this.refreshUserList();

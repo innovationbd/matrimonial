@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   focus1;
   TempList:any = [];
   currentUser;
+  adminUser;
   veriCode="";
   wrongCode = false;
   gotTempList = false;
@@ -28,15 +29,18 @@ export class LoginComponent implements OnInit {
   userEmail="";
   password="";
   UserList:any = [];
+  AdminUserList:any = [];
   MaleUserList:any = [];
   FemaleUserList:any = [];
   dummyvar="";
   errorMessage="";
+  code = this.service.getRandomInt(123456,987654);
 
 
 
 
   ngOnInit(): void {
+    localStorage.removeItem('forgot');
   }
 
   isSignedUp() {
@@ -47,8 +51,26 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('gotVeriCode') == "True") {return true; }
     else {return false;}
   }
-  clickLogin() {
-    if(this.loginValidate()) {
+  clickLogin(passcheck=true) {
+    if(this.adminloginValidate(passcheck)) {
+      localStorage.removeItem('isSignedUp');
+      var UserToken = this.service.getRandomInt(12345678,87654321);
+      localStorage.setItem('usertoken', UserToken);
+      localStorage.setItem('adminid', this.adminUser.adminId);
+      this.service.updateAdminUser({adminId: this.adminUser.adminId, adminToken: UserToken}).subscribe();
+      localStorage.setItem('usertype', '0');
+      localStorage.setItem('fromloginpage', 'True');
+      localStorage.setItem('isLoggedOut','False');
+      localStorage.setItem('username',this.adminUser.adminFullName);
+      if(localStorage.getItem('forgot')=='True') {
+        localStorage.removeItem('forgot');
+        this.router.navigate(['/password']);
+      }
+      else {
+        this.router.navigate(['/admin']);
+      }
+    }
+    else if(this.loginValidate(passcheck)) {
       localStorage.removeItem('isSignedUp');
       var UserToken = this.service.getRandomInt(12345678,87654321);
       localStorage.setItem('usertoken', UserToken);
@@ -65,11 +87,20 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('isLoggedOut','False');
       localStorage.setItem('username',this.currentUser.fullName);
       localStorage.setItem('userage',this.currentUser.age);
-      this.router.navigate(['/user-profile']);
+      if(localStorage.getItem('forgot')=='True') {
+        localStorage.removeItem('forgot');
+        this.router.navigate(['/password']);
+      }
+      else {
+        this.router.navigate(['/user-profile']);
+      }
     }
   }
   refreshUserList() {
     if(!this.gotUserList) {
+      this.service.getAdminList().subscribe(data=>{
+        this.AdminUserList = data;
+      });
       this.service.getMaleUserList().subscribe(data=>{
         this.MaleUserList = data;
       });
@@ -79,19 +110,35 @@ export class LoginComponent implements OnInit {
       this.gotUserList = true;
     }
   }
-  loginValidate() {
-    this.currentUser = this.MaleUserList.find(e => e.email == this.userEmail)
+  loginValidate(passcheck=true) {
+    this.currentUser = this.MaleUserList.find(e => e.email == this.userEmail);
     if(this.currentUser == null) {
-      this.currentUser = this.FemaleUserList.find(e => e.email == this.userEmail)
+      this.currentUser = this.FemaleUserList.find(e => e.email == this.userEmail);
       if(this.currentUser == null) {
-        this.errorMessage = "Your Email is not Registered. Please Sign Up First."
+        this.errorMessage = "Your Email is not Registered. Please Sign Up First.";
         return false;
       }
     }
-    if(this.currentUser.userPass == this.service.mEncrypt(this.password)) { return true; }
-    else {
-      this.errorMessage = "Invalid Email or Password or Both"
-      return false;
+    if(passcheck) {  //passcheck is false when forgot password, want to recover it
+      if(this.currentUser.userPass == this.service.mEncrypt(this.password)) { return true; }
+      else {
+        this.errorMessage = "Invalid Email or Password or Both";
+        return false;
+      }
+    }
+    else {return true;}
+  }
+  adminloginValidate(passcheck=true) {
+    this.adminUser = this.AdminUserList.find(e => e.adminUserName == this.userEmail);
+    if(this.adminUser != null) {
+      if(passcheck) {  //passcheck is false when forgot password, want to recover it
+        if(this.adminUser.adminPass == this.password) { return true; }
+        else {
+          this.errorMessage = "Invalid Email or Password or Both";
+          return false;
+        }
+      }
+      else {return true;}
     }
   }
 
@@ -104,56 +151,103 @@ export class LoginComponent implements OnInit {
     }
   }
   verifyEmail() {
-    this.currentUser = this.TempList.find(e => e.tempEmail == localStorage.getItem('userid'))
-    if(this.currentUser == null) { return false; }
-    else if(this.currentUser.tempVeriCode == this.veriCode) { this.wrongCode=false; return true; }
-    else { return false; }
+    if(this.forgot()) {
+      return this.code == this.veriCode;
+    }
+    else {
+      this.currentUser = this.TempList.find(e => e.tempEmail == localStorage.getItem('userid'))
+      if(this.currentUser == null) { return false; }
+      else if(this.currentUser.tempVeriCode == this.veriCode) { this.wrongCode=false; return true; }
+      else { return false; }
+    }
   }
   clickVerify() {
     if(!this.verifyEmail()) { this.wrongCode=true; return false; }
-    if(this.currentUser.tempGender == "Male") {
-      var valM={
-        fullName:this.currentUser.tempName,
-        gender:this.currentUser.tempGender,
-        state:this.currentUser.tempState,
-        cellPhone:this.currentUser.tempCellPhone,
-        email:this.currentUser.tempEmail,
-        dateOfBirth:this.currentUser.tempDateOfBirth,
-        matchShowLimit:5,
-        userPass:this.currentUser.tempPass,
-        status:"Inactive",
-        openingDate:this.service.getDateTime(),
-        lastEdit:this.service.getDateTime()
-      };
-      this.service.addMaleUser(valM).subscribe(res=>{
-        alert(res.toString());
-      });
+    if(this.forgot()) {
+      this.clickLogin(false);
     }
     else {
-      var valF={
-        fullName:this.currentUser.tempName,
-        gender:this.currentUser.tempGender,
-        state:this.currentUser.tempState,
-        cellPhone:this.currentUser.tempCellPhone,
-        email:this.currentUser.tempEmail,
-        dateOfBirth:this.currentUser.tempDateOfBirth,
-        matchShowLimit:5,
-        userPass:this.currentUser.tempPass,
-        status:"Inactive",
-        openingDate:this.service.getDateTime(),
-        lastEdit:this.service.getDateTime()
-      };
-      this.service.addFemaleUser(valF).subscribe(res=>{
+        if(this.currentUser.tempGender == "Male") {
+        var valM={
+          fullName:this.currentUser.tempName,
+          gender:this.currentUser.tempGender,
+          state:this.currentUser.tempState,
+          cellPhone:this.currentUser.tempCellPhone,
+          email:this.currentUser.tempEmail,
+          dateOfBirth:this.currentUser.tempDateOfBirth,
+          matchShowLimit:5,
+          userPass:this.currentUser.tempPass,
+          status:"Active",
+          openingDate:this.service.getDateTime(),
+          lastEdit:this.service.getDateTime()
+        };
+        this.service.addMaleUser(valM).subscribe(res=>{
+          //alert(res.toString());
+        });
+      }
+      else {
+        var valF={
+          fullName:this.currentUser.tempName,
+          gender:this.currentUser.tempGender,
+          state:this.currentUser.tempState,
+          cellPhone:this.currentUser.tempCellPhone,
+          email:this.currentUser.tempEmail,
+          dateOfBirth:this.currentUser.tempDateOfBirth,
+          matchShowLimit:5,
+          userPass:this.currentUser.tempPass,
+          status:"Active",
+          openingDate:this.service.getDateTime(),
+          lastEdit:this.service.getDateTime()
+        };
+        this.service.addFemaleUser(valF).subscribe(res=>{
+          //alert(res.toString());
+        });
+      }
+      this.service.deleteTempUser(this.currentUser.tempId).subscribe(res=>{
         alert(res.toString());
       });
+      localStorage.setItem('isSignedUp', "True");
+      localStorage.removeItem('userid');
     }
-    this.service.deleteTempUser(this.currentUser.tempId).subscribe(res=>{
-      alert(res.toString());
-    });
-    localStorage.setItem('isSignedUp', "True");
     localStorage.removeItem('gotVeriCode');
-    localStorage.removeItem('userid');
     //this.router.navigate(['/login']);
+  }
+  clickForgot() {
+    localStorage.setItem('forgot','True');
+  }
+  clickRemember() {
+    localStorage.setItem('forgot','False');
+  }
+  forgot() {
+    if(localStorage.getItem('forgot')=='True') {return true;}
+    else {return false;}
+  }
+  sendCode() {
+    if(this.adminloginValidate(false)) {
+      localStorage.setItem('usertype','0');
+    }
+    else if(!this.loginValidate(false)) {
+      this.errorMessage = "Your Email is not registered! Please Sign Up.";
+      return false;
+    }
+    var emailVal={
+      subject: "Verification code from MUNA Matrimonial",
+      message: "Your verification code is " + this.code,
+      toEmail: [this.userEmail]
+    }
+    this.service.sendEmail(emailVal).subscribe(res=>{
+      //alert(res.toString());
+    });
+    if(localStorage.getItem('usertype')=='0') {
+      this.service.updateAdminUser({adminId: this.adminUser.adminId, adminPass: this.code}).subscribe();
+    }
+    else if(this.currentUser.gender == 'Male') {
+      this.service.updateMaleUser({userId: this.currentUser.userId, userPass: this.service.mEncrypt(this.code)}).subscribe();
+    }
+    else {
+      this.service.updateFemaleUser({userId: this.currentUser.userId, userPass: this.service.mEncrypt(this.code)}).subscribe();
+    }
+    localStorage.setItem('gotVeriCode','True');
   }
 
 

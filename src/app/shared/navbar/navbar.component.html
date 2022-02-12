@@ -13,7 +13,8 @@
           <div id="logo" class="pull-left">
             <h1 *ngIf="!isLoggedin()"><span><i class="fa fa-heart"></i></span><a href="" class="scrollto">`  <b>MUNA MATRIMONIAL</b></a></h1>
 
-            <h1 *ngIf="isLoggedin()"><span><i class="fa fa-heart"></i></span><a [routerLink]="['/user-profile']" class="scrollto">`  <b style="text-transform: uppercase;">{{userName}}</b></a></h1>
+            <h1 *ngIf="isLoggedin()&&!isAdmin()"><span><i class="fa fa-heart"></i></span><a [routerLink]="['/user-profile']" class="scrollto">`  <b style="text-transform: uppercase;">{{userName}}</b></a></h1>
+            <h1 *ngIf="isLoggedin()&&isAdmin()"><span><i class="fa fa-heart"></i></span><a [routerLink]="['/admin']" class="scrollto">`  <b style="text-transform: uppercase;">{{userName}}</b></a></h1>
             <!-- <a href="#body"><img src="../assets/img/logo.png" alt="" title="" /></a>-->
           </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
@@ -49,12 +50,11 @@
                   <div ngbDropdown class="dropdown" placement="bottom-left">
                   <a  id="dropdownBasic1" style="color: #F44336;" ngbDropdownToggle><i class="nc-icon nc-bullet-list-67" aria-hidden="true"></i></a>
                       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
-                          <a class="dropdown-item" [routerLink]="['/view-profile']">View Profile</a>
-                          <a class="dropdown-item" [routerLink]="['/user-profile']">Top Matches</a>
-                          <a class="dropdown-item" [routerLink]="['/edit-profile']">Edit Profile</a>
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/view-profile']">View Profile</a>
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/user-profile']">Top Matches</a>
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/edit-profile']">Edit Profile</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" [routerLink]="['/adminuser']">Admin User</a>
-                          <a class="dropdown-item" [routerLink]="['/maleuser']">Male User</a>
+                          <a class="dropdown-item" [routerLink]="['/password']">Log Out</a>
                           <a (click)="logout()" class="dropdown-item" [routerLink]="['/login']">Log Out</a>
                       </div>
                   </div>

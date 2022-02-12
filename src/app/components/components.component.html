@@ -7,8 +7,8 @@
   <div class="intro-content">
     <h2><span>MUNA Matrimonial</span><br>Let's Walk Together
       <button *ngIf="isAdmin()" type="button" class="btn btn-light mr-1"
-      data-toggle="modal" data-target="#exampleModal"
-    (click)="editClick(dataItem)"
+      data-toggle="modal" data-target="#bannerModal"
+    (click)="editClick(['Banner'])"
     data-backdrop="static" data-keyboard="false">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -21,7 +21,7 @@
       <a href="#contact" class="btn-get-started scrollto">Contact Us</a>
     </div> -->
 
-        <div class="mr-auto ml-auto">
+        <div  *ngIf="!loggedin" class="mr-auto ml-auto">
           <div class="card-register">
 
               <form class="register-form">
@@ -80,9 +80,9 @@
         </div>
   </div>
    <div id="intro-carousel" class="owl-carousel" >
-    <div class="item" style="background-image: url('assets/img/intro-carousel/Picture1.jpg');">
+    <div *ngFor="let photo of photos" class="item" style="background-image: url('assets/img/intro-carousel/photo');">
       <div class="caption">
-          <p >Hasan & Sumaiya: They Got Married.</p>
+          <p>Hasan & Sumaiya: They Got Married.</p>
       </div>
     </div>
     <div class="item" style="background-image: url('assets/img/intro-carousel/Picture2.jpg');">
@@ -108,7 +108,52 @@
   <app-contact></app-contact>
 </main><!-- housing -->
 
+<div class="modal fade" id="bannerModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"
+        aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+    <div class="d-flex flex-row bd-highlight">
+        <div class="p-4 w-100 bd-highlight">
+          <div class="form-group form-floating">
+              <input type="text" [(ngModel)]="webtitle" class="form-control" placeholder="Enter Your Full Name" id="fullName">
+              <label for="FullName">Website Title</label>
+          </div>
 
+          <div class="form-group form-floating">
+              <input type="text" [(ngModel)]="webslogan" class="form-control" placeholder="Cell Phone Number" id="cellPhone">
+              <label for="CellPhone">Website Slogan</label>
+          </div>
+
+          <div class="form-group form-floating">
+              <input type="text" [(ngModel)]="Email" class="form-control" placeholder="Enter Your Email" id="email">
+              <label for="Email">Email</label>
+          </div>
+
+          <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+              <input  class="form-control" [(ngModel)]="DateOfBirth"
+                   name="dp" id="dateOfBirth" type="date" />
+              <label for="DateOfBirth">Date of Birth</label>
+          </div>
+        </div>
+    </div>
+
+        <button type="button" (click)="createUser()"
+        class="btn btn-primary float-end">
+        Create User
+        </button>
+
+    </div>
+
+
+</div>
+</div>
+</div>
 
 
 

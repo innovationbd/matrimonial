@@ -1,4 +1,22 @@
-<app-profile-home></app-profile-home>
+<div class="wrapper" *ngIf=getU()>
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/furkan-cover-photo.jpg');">
+        <div class="filter"></div>
+    </div>
+
+    <div class="section-low-padding profile-content">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img src="./assets/img/faces/profile-icon.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+                <div class="name">
+                    <h4 class="title">{{currentUser.fullName}}</h4>
+                    <h6 class="description">{{currentUser.gender}} : Age {{currentUser.age}}</h6>
+                </div>
+            </div>
+          </div>
+</div>
+</div>
 
 <div class="row">
     <div class="col-md-6 ml-auto mr-auto">
@@ -40,7 +58,7 @@
               <div class="col-sm-4">
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                    <input disabled [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="male" value="Male">
                     Male
                     <span class="form-check-sign"></span>
                   </label>
@@ -49,7 +67,7 @@
               <div class="col-sm-4">
                 <div class="form-check-radio">
                   <label class="form-check-label">
-                    <input [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="female" value="Female" >
+                    <input disabled [ngModel]="currentUser.gender" class="form-check-input" type="radio" name="gender" id="female" value="Female" >
                     Female
                     <span class="form-check-sign"></span>
                   </label>
@@ -279,25 +297,25 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="High School" id="highSchool">
+              <input type="text" [(ngModel)]="currentUser.highSchool" class="form-control" placeholder="High School" id="highSchool">
               <label for="highSchool">High School</label>
           </div>
         </div>
         <div class="col-sm-2">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="High School Year" id="highSchoolYear">
+                <input type="text" [(ngModel)]="currentUser.highSchoolYear" class="form-control" placeholder="High School Year" id="highSchoolYear">
                 <label for="highSchoolYear">Year</label>
             </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Bachelors" id="bachelors">
+              <input type="text" [(ngModel)]="currentUser.bachelors" class="form-control" placeholder="Bachelors" id="bachelors">
               <label for="bachelors">Bachelors</label>
           </div>
         </div>
         <div class="col-sm-2">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Bachelors Year" id="bachelorsYear">
+                <input type="text" [(ngModel)]="currentUser.bachelorsYear" class="form-control" placeholder="Bachelors Year" id="bachelorsYear">
                 <label for="bachelorsYear">Year</label>
             </div>
         </div>
@@ -305,25 +323,25 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Masters in" id="masters">
+              <input type="text" [(ngModel)]="currentUser.masters" class="form-control" placeholder="Masters in" id="masters">
               <label for="masters">Masters in</label>
           </div>
         </div>
         <div class="col-sm-2">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Masters Year" id="mastersYear">
+                <input type="text" [(ngModel)]="currentUser.mastersYear" class="form-control" placeholder="Masters Year" id="mastersYear">
                 <label for="mastersYear">Year</label>
             </div>
         </div>
         <div class="col-sm-4">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Doctorate in" id="doctorate">
+              <input type="text" [(ngModel)]="currentUser.doctorate" class="form-control" placeholder="Doctorate in" id="doctorate">
               <label for="doctorate">Doctorate in</label>
           </div>
         </div>
         <div class="col-sm-2">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Doctorate Year" id="doctorateYear">
+                <input type="text" [(ngModel)]="currentUser.doctorateYear" class="form-control" placeholder="Doctorate Year" id="doctorateYear">
                 <label for="doctorateYear">Year</label>
             </div>
         </div>
@@ -331,13 +349,13 @@
       <div class="row">
         <div class="col-sm-8">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Other Degree(s)" id="otherDegree">
+              <input type="text" [(ngModel)]="currentUser.otherDegree" class="form-control" placeholder="Other Degree(s)" id="otherDegree">
               <label for="otherDegree">Other Degree(s)</label>
           </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Other Degree(s) Year" id="otherDegreeYear">
+                <input type="text" [(ngModel)]="currentUser.otherDegreeYear" class="form-control" placeholder="Other Degree(s) Year" id="otherDegreeYear">
                 <label for="otherDegreeYear">Year(s)</label>
             </div>
         </div>
@@ -350,14 +368,14 @@
         <br>
             <div class="form-check-radio">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="employed" id="yes" value="yes" checked="">
+                <input class="form-check-input" type="radio" [(ngModel)]="currentUser.employed" name="employed" id="yes" value="Yes" checked="">
                 Yes
                 <span class="form-check-sign"></span>
               </label>
             </div>
             <div class="form-check-radio">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="employed" id="no" value="no" >
+                <input class="form-check-input" type="radio" [(ngModel)]="currentUser.employed" name="employed" id="no" value="No" >
                 No
                 <span class="form-check-sign"></span>
               </label>
@@ -365,19 +383,19 @@
           </div>
         <div class="col-sm-3">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Where do you work?" id="employment">
+              <input type="text" [(ngModel)]="currentUser.employment" class="form-control" placeholder="Where do you work?" id="employment">
               <label for="employment">If yes, where do you work?</label>
           </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Position" id="position">
+                <input type="text" [(ngModel)]="currentUser.position" class="form-control" placeholder="Position" id="position">
                 <label for="position">Position</label>
             </div>
         </div>
         <div class="col-sm-3">
           <div class="form-group form-floating">
-              <input type="text" class="form-control" placeholder="Income (yearly)" id="income">
+              <input type="text" [(ngModel)]="currentUser.income" class="form-control" placeholder="Income (yearly)" id="income">
               <label for="income">Income (yearly)</label>
           </div>
         </div>
@@ -397,7 +415,7 @@ Parent/Guardian's Information
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Names and Relationships" id="guarName">
+                <input type="text" [(ngModel)]="currentUser.guarName" class="form-control" placeholder="Names and Relationships" id="guarName">
                 <label for="guarName">Names and Relationships</label>
             </div>
           </div>
@@ -405,23 +423,20 @@ Parent/Guardian's Information
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group form-floating">
-                <textarea class="form-control" placeholder="Guardian's Full Address" id="guarAddress"></textarea>
+                <textarea [(ngModel)]="currentUser.guarAddress" class="form-control" placeholder="Guardian's Full Address" id="guarAddress"></textarea>
                 <label for="guarAddress">Address</label>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Guardian's City" id="guarCity">
+                <input type="text" [(ngModel)]="currentUser.guarCity" class="form-control" placeholder="Guardian's City" id="guarCity">
                 <label for="guarCity">City</label>
             </div>
           </div>
           <div class="col-sm-2">
             <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
-                <select ng-model="myVar" class="form-select" id="guarState">
-                  <option value="alabama">Alabama
-                  <option value="newyork">New York
-                  <option value="california">California
-                  <option value="texus">Texus
+                <select [(ngModel)]="currentUser.guarState"  class="form-select" id="guarState">
+                  <option *ngFor="let state of STATES" value={{state.State}}>{{state.State}}</option>
                 </select>
                 <label for="guarState">State</label>
             </div>
@@ -430,19 +445,19 @@ Parent/Guardian's Information
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="Guardian's Country" id="guarCountry">
+                <input type="text" [(ngModel)]="currentUser.guarCountry" class="form-control" placeholder="Guardian's Country" id="guarCountry">
                 <label for="guarCountry">Country</label>
             </div>
           </div>
           <div class="col-sm-4">
               <div class="form-group form-floating">
-                  <input type="text" class="form-control" placeholder="Guardian's Phone" id="guarPhone">
+                  <input type="text" [(ngModel)]="currentUser.guarPhone" class="form-control" placeholder="Guardian's Phone" id="guarPhone">
                   <label for="guarPhone">Phone</label>
               </div>
           </div>
           <div class="col-sm-4">
               <div class="form-group form-floating">
-                  <input type="text" class="form-control" placeholder="Guardian's Email" id="guarEmail">
+                  <input type="text" [(ngModel)]="currentUser.guarEmail" class="form-control" placeholder="Guardian's Email" id="guarEmail">
                   <label for="guarEmail">Email</label>
               </div>
           </div>
@@ -450,7 +465,7 @@ Parent/Guardian's Information
         <div class="row">
           <div class="col-sm-12">
               <div class="form-group form-floating">
-                  <input type="text" class="form-control" placeholder="Guardian's Profession" id="guarProfession">
+                  <input type="text" [(ngModel)]="currentUser.guarProfession" class="form-control" placeholder="Guardian's Profession" id="guarProfession">
                   <label for="guarProfession">Profession</label>
               </div>
           </div>
@@ -458,7 +473,7 @@ Parent/Guardian's Information
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group form-floating">
-                <textarea class="form-control" placeholder="Family Brief" id="familyBrief"></textarea>
+                <textarea [(ngModel)]="currentUser.familyBrief" class="form-control" placeholder="Family Brief" id="familyBrief"></textarea>
                 <label for="familyBrief">Please enter any additional information about your family that you would like to share</label>
             </div>
           </div>
@@ -481,64 +496,64 @@ Personal Information
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="hanafi" value="Hanafi">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="hanafi" value="Hanafi">
                   Hanafi
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="shafiee" value="Shafiee" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="shafiee" value="Shafiee" >
                   Shafiee
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="maliki" value="Maliki" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="maliki" value="Maliki" >
                   Maliki
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="hanbali" value="Hanbali" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="hanbali" value="Hanbali" >
                   Hanbali
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="ahleHadith" value="Ahle Hadith" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="ahleHadith" value="Ahle Hadith" >
                   Ahle Hadith
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="sunni" value="Sunni" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="sunni" value="Sunni" >
                   Sunni
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="shiite" value="Shi’ite" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="shiite" value="Shi’ite" >
                   Shi’ite
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="religiousPractice" id="other" value="Other" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.religiousPractice" name="religiousPractice" id="other" value="Other" >
                   Other
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
-          <div class="col-sm-12">
-            <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="religiousPracticeOther">
+          <div class="col-sm-12" >
+            <div class="form-group form-floating" *ngIf=relPracticeOther()>
+                <input type="text" [(ngModel)]="currentUser.religiousPracticeOther" class="form-control" placeholder="if Other, Please Specify" id="religiousPracticeOther">
                 <label for="religiousPracticeOther">if Other, Please Specify</label>
             </div>
           </div>
@@ -546,7 +561,7 @@ Personal Information
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group form-floating">
-                <textarea class="form-control" placeholder="Religious Practice Brief" id="religiousPracticeBrief"></textarea>
+                <textarea [(ngModel)]="currentUser.religiousPracticeBrief" class="form-control" placeholder="Religious Practice Brief" id="religiousPracticeBrief"></textarea>
                 <label for="religiousPracticeBrief">Please write about your religious practices, in brief (ex: daily prayers, fasting, attending halaqas, visiting the masjid, etc.)</label>
             </div>
           </div>
@@ -554,55 +569,55 @@ Personal Information
         <div class="row">
           <div class="col-sm-12">
               <div class="form-group form-floating">
-                  <input type="text" class="form-control" placeholder="Revert Time" id="revertTime">
+                  <input type="text" [(ngModel)]="currentUser.revertTime" class="form-control" placeholder="Revert Time" id="revertTime">
                   <label for="revertTime">If you are a revert, please tell us, when did you accept Islam?</label>
               </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-4" *ngIf=isMale()>
           <h6>This question is only for Brothers</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="beard" id="bearded" value="Bearded" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.beard" name="beard" id="bearded" value="Yes" checked="">
                   I have a beard
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="beard" id="noBeard" value="Not Bearded" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.beard" name="beard" id="noBeard" value="No" >
                   I don’t have a beard
                   <span class="form-check-sign"></span>
                 </label>
               </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-5" *ngIf=!isMale()>
           <h6>This question is only for Sisters: I Wear a-</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="wear" id="headscarf" value="Headscarf">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.wear" name="wear" id="headscarf" value="Headscarf">
                   Headscarf
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="wear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.wear" name="wear" id="jelbab-abaya" value="Jelbab-Abaya" >
                   Jelbab/Abaya
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio" style="margin-right:28px;">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="wear" id="niqab" value="Niqab">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.wear" name="wear" id="niqab" value="Niqab">
                   Niqab
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio" >
                 <label class="form-check-label">
-                  <input class="form-check-input"  type="radio" name="wear" id="none" value="None">
+                  <input class="form-check-input"  type="radio" [(ngModel)]="currentUser.wear" name="wear" id="none" value="None">
                   None
                   <span class="form-check-sign"></span>
                 </label>
@@ -612,14 +627,14 @@ Personal Information
           <h6>Are you a smoker?</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="smoker" id="no" value="No" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.smoker" name="smoker" id="no" value="No" checked="">
                   I do not smoke
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="smoker" id="yes" value="Yes" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.smoker" name="smoker" id="yes" value="Yes" >
                   I smoke
                   <span class="form-check-sign"></span>
                 </label>
@@ -643,29 +658,29 @@ SPOUSAL PREFERENCES
           <h6>Religious Practices</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preReligious" id="sunni" value="Sunni" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preReligious" name="preReligious" id="sunni" value="Sunni" >
                   Sunni
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preReligious" id="shiite" value="Shi’ite" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preReligious" name="preReligious" id="shiite" value="Shi’ite" >
                   Shi’ite
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preReligious" id="other" value="Other" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preReligious" name="preReligious" id="other" value="Other" >
                   Other
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
-          <div class="col-sm-7">
+          <div class="col-sm-7" *ngIf=preReligiousOther()>
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="preReligiousOther">
+                <input type="text" [(ngModel)]="currentUser.preReligiousOther" class="form-control" placeholder="if Other, Please Specify" id="preReligiousOther">
                 <label for="preReligiousOther">if Other, Please Specify</label>
             </div>
           </div>
@@ -673,66 +688,66 @@ SPOUSAL PREFERENCES
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group form-floating">
-                <textarea class="form-control" placeholder="Religious Practice Preferences in Brief" id="preReligiousBrief"></textarea>
+                <textarea [(ngModel)]="currentUser.preReligiousBrief" class="form-control" placeholder="Religious Practice Preferences in Brief" id="preReligiousBrief"></textarea>
                 <label for="preReligiousBrief">Please write any religious practice preferences, in brief</label>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-5">
+          <div class="col-sm-5" *ngIf=isMale()>
           <h6>This question is only for Brothers:</h6>
           <label>Preferences for a wife-</label>
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preWear" id="headscarf" value="Headscarf">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="headscarf" value="Headscarf">
                   Headscarf
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preWear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="jelbab-abaya" value="Jelbab-Abaya" >
                   Jelbab/Abaya
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio" style="margin-right:28px;">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preWear" id="niqab" value="Niqab">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="niqab" value="Niqab">
                   Niqab
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio" >
                 <label class="form-check-label">
-                  <input class="form-check-input"  type="radio" name="preWear" id="noPreference" value="No Preference">
+                  <input class="form-check-input"  type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="noPreference" value="No Preference">
                   No Preference
                   <span class="form-check-sign"></span>
                 </label>
               </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4" *ngIf=!isMale()>
           <h6>This question is only for Sisters</h6>
           <label>Preferences for a husband-</label>
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preBeard" id="beard" value="Beard" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="beard" value="Beard" checked="">
                   Beard
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preBeard" id="noBeard" value="No Beard" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="noBeard" value="No Beard" >
                   No Beard
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preBeard" id="noPreference" value="No Preference" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="noPreference" value="No Preference" >
                   No Preference
                   <span class="form-check-sign"></span>
                 </label>
@@ -742,21 +757,21 @@ SPOUSAL PREFERENCES
           <h6>Are You Fine with <br>Smoking?</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preSmoking" id="no" value="No" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preSmoking" name="preSmoking" id="no" value="No" checked="">
                   No
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preSmoking" id="yes" value="Yes" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preSmoking" name="preSmoking" id="yes" value="Yes" >
                   Yes
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preSmoking" id="noPreference" value="No Preference" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preSmoking" name="preSmoking" id="noPreference" value="No Preference" >
                   No Preference
                   <span class="form-check-sign"></span>
                 </label>
@@ -768,37 +783,37 @@ SPOUSAL PREFERENCES
           <div class="col-sm-6">
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preEthnic" id="own" value="my own ethnic background or country of origin" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEthnic" name="preEthnic" id="own" value="Own Ethnicity" checked="">
                   I prefer my future spouse from my own ethnic background or country of origin (specify)
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf=ownEthnicity()>
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Specify own ethnic background or country" id="preEthnicOwn">
+                    <input type="text" [(ngModel)]="currentUser.preEthnicSpecific" class="form-control" placeholder="Specify own ethnic background or country" id="preEthnicOwn">
                     <label for="preEthnicOwn">Specify own ethnic background or country</label>
                 </div>
             </div>
             <div class="col-sm-6">
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preEthnic" id="specific" value="from a specific ethnicity or country" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEthnic" name="preEthnic" id="specific" value="Specific Ethnicity" >
                   I am seeking my future spouse to be from a specific ethnicity or country (specify)
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf=specificEthnicity()>
                 <div class="form-group form-floating">
-                    <input type="text" class="form-control" placeholder="Specify ethnic background or country" id="preEthnicSpecific">
+                    <input type="text" [(ngModel)]="currentUser.preEthnicSpecific" class="form-control" placeholder="Specify ethnic background or country" id="preEthnicSpecific">
                     <label for="preEthnicSpecific">Specify ethnic background or country</label>
                 </div>
             </div>
             <div class="col-sm-6">
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preEthnic" id="noPreference" value="I have no Preference" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEthnic" name="preEthnic" id="noPreference" value="No Preference" >
                   I have no Preference
                   <span class="form-check-sign"></span>
                 </label>
@@ -813,29 +828,29 @@ SPOUSAL PREFERENCES
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="UScitizen" value="US Citizen" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="UScitizen" value="US Citizen" >
                   US Citizen
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="permanentResident" value="Permanent Resident" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="permanentResident" value="Permanent Resident" >
                   Permanent Resident
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="preImmigrationStatus" id="other" value="Other" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="other" value="Other" >
                   Other (specify)
                   <span class="form-check-sign"></span>
                 </label>
               </div>
             </div>
-          <div class="col-sm-5">
+          <div class="col-sm-5" *ngIf=preImStatusOther()>
             <div class="form-group form-floating">
-                <input type="text" class="form-control" placeholder="if Other, Please Specify" id="preImmigrationStatusOther">
+                <input type="text" [(ngModel)]="currentUser.preImmigrationStatusOther" class="form-control" placeholder="if Other, Please Specify" id="preImmigrationStatusOther">
                 <label for="preImmigrationStatusOther">if Other, Please Specify</label>
             </div>
           </div>
@@ -846,24 +861,32 @@ SPOUSAL PREFERENCES
 
           <div class="col-sm-12">
           <label>I prefer a spouse who’s-</label>
+          <br>
           <div class="form-check-radio">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="preMaritalStatus" id="single" value="Single" checked="">
+              <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preMaritalStatus" name="preMaritalStatus" id="single" value="Single" checked="">
               Single
               <span class="form-check-sign"></span>
             </label>
           </div>
           <div class="form-check-radio">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="preMaritalStatus" id="divorced" value="Divorced" >
+              <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preMaritalStatus" name="preMaritalStatus" id="divorced" value="Divorced" >
               Divorced
               <span class="form-check-sign"></span>
             </label>
           </div>
           <div class="form-check-radio">
             <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="preMaritalStatus" id="widowed" value="Widowed" >
+              <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preMaritalStatus" name="preMaritalStatus" id="widowed" value="Widowed" >
               Widowed
+              <span class="form-check-sign"></span>
+            </label>
+          </div>
+          <div class="form-check-radio">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preMaritalStatus" name="preMaritalStatus" id="noPreference" value="No Preference" >
+              No Preference
               <span class="form-check-sign"></span>
             </label>
           </div>
@@ -872,21 +895,103 @@ SPOUSAL PREFERENCES
 
             <div class="col-sm-12">
             <label>I am willing to consider a spouse with existing children-</label>
+            <br>
             <div class="form-check-radio">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="preChildren" id="yes" value="Yes">
+                <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preChildren" name="preChildren" id="yes" value="Yes">
                 Yes
                 <span class="form-check-sign"></span>
               </label>
             </div>
             <div class="form-check-radio">
               <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="preChildren" id="no" value="No" >
+                <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preChildren" name="preChildren" id="no" value="No" >
                 No
                 <span class="form-check-sign"></span>
               </label>
             </div>
             </div>
+
+            <h6>Education</h6>
+
+              <div class="col-sm-12">
+              <label>Preferred Minimum Education Level of my Future Spouse-</label>
+              <br>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEducation" name="preEducation" id="doctorate" value="Doctorate">
+                  Doctorate
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEducation" name="preEducation" id="masters" value="Masters">
+                  Masters
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEducation" name="preEducation" id="bachelor" value="Bachelor">
+                  Bachelor
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEducation" name="preEducation" id="noPreference" value="No Preference">
+                  No Preference
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              </div>
+
+              <h6>Employment</h6>
+
+                <div class="col-sm-12">
+                <label>Preferred Employment Status of Future Spouse-</label>
+                <br>
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEmployment" name="preEmployment" id="employed" value="Employed">
+                    Employed
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEmployment" name="preEmployment" id="notEmployed" value="Not Employed" >
+                    Not Employed
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+                <div class="form-check-radio">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preEmployment" name="preEmployment" id="noPreference" value="No Preference" >
+                    No Preference
+                    <span class="form-check-sign"></span>
+                  </label>
+                </div>
+                </div>
+                <div class="col-sm-6" *ngIf=preEmployed()>
+                  <div class="form-group form-floating">
+                      <input type="text" [(ngModel)]="currentUser.preIncome" class="form-control" placeholder="Preferred minimum yearly Income" id="preIncome">
+                      <label for="preIncome">Preferred minimum yearly Income of future spouse (USD)</label>
+                  </div>
+                </div>
+
+                <h6>Age Difference</h6>
+
+                  <div class="col-sm-12"></div>
+                  <div class="col-sm-6">
+                    <div class="form-group form-floating">
+                        <input type="text" [(ngModel)]="currentUser.preAgeGap" class="form-control" placeholder="Maximum Age Difference" id="preAgeGap">
+                        <label for="preIncome">Preferred Maximum Age Difference of Future Spouse</label>
+                    </div>
+                  </div>
+
         </div>
       </div>
     </div>

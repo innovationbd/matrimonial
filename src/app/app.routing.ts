@@ -16,6 +16,8 @@ import { MessageComponent } from './examples/profile/message/message.component';
 import { NotificationComponent } from './examples/profile/notification/notification.component';
 import { TopMatchesComponent } from './examples/profile/top-matches/top-matches.component';
 import { ViewProfileComponent } from './examples/profile/view-profile/view-profile.component';
+import { AdminComponent } from './examples/profile/admin/admin.component';
+import { PasswordComponent } from './examples/password/password.component';
 
 import { SignupComponent } from './examples/signup/signup.component';
 import { LoginComponent } from './examples/login/login.component';
@@ -43,9 +45,11 @@ const routes: Routes =[
     { path: 'top-matches',      component: TopMatchesComponent },
     { path: 'view-profile',     component: ViewProfileComponent },
     { path: 'adminuser',        component: AdminuserComponent },
+    { path: 'admin',            component: AdminComponent },
     { path: 'maleuser',         component: MaleuserComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'login',            component: LoginComponent },
+    { path: 'password',         component: PasswordComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent }
 ];

@@ -15,27 +15,61 @@ export class EditProfileComponent implements OnInit {
   focus1;
   model;
   currentUser;
+  gotid;
   STATES = this.service.STATES;
 
   ngOnInit(): void {
+    this.service.loginauth();
     this.getCurrentUser();
+    this.gotid=localStorage.getItem('userid');
+  }
+  getU() {
+    if(localStorage.getItem('usertype')=='0') {
+      if(localStorage.getItem('userid') != this.gotid) {
+        this.getCurrentUser();
+        this.gotid=localStorage.getItem('userid');
+      }
+    }
+    return true;
   }
   getCurrentUser() {
-    if(localStorage.getItem('usertype')=='1') {
+    if(localStorage.getItem('usertype')=='1' || (localStorage.getItem('usertype')=='0' && localStorage.getItem('gender')=='Male')) {
         this.service.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
           this.currentUser = data;
         });
     }
-    else if(localStorage.getItem('usertype')=='2') {
+    else if(localStorage.getItem('usertype')=='2' || (localStorage.getItem('usertype')=='0' && localStorage.getItem('gender')=='Female')) {
         this.service.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
           this.currentUser = data;
         });
     }
+    return true;
   }
   imStatusOther() {
     if(this.currentUser.immigrationStatus == null) { return false; }
     if(this.currentUser.immigrationStatus == "US Citizen" || this.currentUser.immigrationStatus == "Permanent Resident") { return false; }
     else { return true; }
+  }
+  relPracticeOther() {
+    if(this.currentUser.religiousPractice == "Other") { return true; }
+  }
+  preReligiousOther() {
+    if(this.currentUser.preReligious == "Other") { return true; }
+  }
+  ownEthnicity() {
+    if(this.currentUser.preEthnic == "Own Ethnicity") { return true; }
+  }
+  specificEthnicity() {
+    if(this.currentUser.preEthnic == "Specific Ethnicity") { return true; }
+  }
+  preImStatusOther() {
+    if(this.currentUser.preImmigrationStatus == "Other") { return true; }
+  }
+  preEmployed() {
+    if(this.currentUser.preEmployment == "Employed") { return true; }
+  }
+  isMale() {
+    if(this.currentUser.gender == 'Male') { return true; }
   }
   clickSave() {
     this.currentUser.userToken = localStorage.getItem('usertoken');
@@ -50,6 +84,7 @@ export class EditProfileComponent implements OnInit {
         alert(res.toString());
       });
     }
+
   }
   getAge() {
     var todate = new Date();

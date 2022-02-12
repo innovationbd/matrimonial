@@ -49,8 +49,8 @@
                             <label>Gender</label><span *ngIf=!genderValidate() style="color:red;">. *Please select gender</span>
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
 
-                                <select [(ngModel)]="Gender" class="form-control" placeholder="Select Your Gender">
-                                  <option value="Female">Female
+                                <select [(ngModel)]="Gender" class="form-select" placeholder="Select Your Gender">
+                                  <option value="Female" selected>Female
                                   <option value="Male">Male
                                 </select>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="col-md-6">
                             <label>Date of Birth</label>
                             <div class="input-group date" [ngClass]="{'input-group-focus':focus===true}">
-                                <input  class="form-control" placeholder="yyyy-mm-dd"
+                                <input class="form-control" placeholder="yyyy-mm-dd"
                                 name="dp" [(ngModel)]="DateOfBirth" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (focus)="focus=true" (blur)="focus=false" >
                                 <div class="input-group-append">
                                     <span class="glyphicon glyphicon-calendar input-group-text">
@@ -81,13 +81,10 @@
                         <div class="col-md-6">
                             <label>State</label>
                             <div class="form-group" [ngClass]="{'input-group-focus':focus===true}">
+                              <select [(ngModel)]="State" class="form-select" id="state">
+                                <option *ngFor="let state of STATES" value={{state.State}}>{{state.State}}</option>
+                              </select>
 
-                                <select [(ngModel)]="State" class="form-control">
-                                  <option value="Alabama" selected>Alabama
-                                  <option value="Newyork">New York
-                                  <option value="California">California
-                                  <option value="Texus">Texus
-                                </select>
                             </div>
                         </div>
 
@@ -130,9 +127,7 @@
 
 
                     <div class="row">
-                        <p>{{this.paragraph}}</p>
                         <div class="col-md-4 mr-auto ml-auto">
-
                             <button (click)="createClick()" class="btn btn-danger btn-lg btn-fill">Confirm Registration</button>
                             <p *ngIf=userAlreadyExist style="color:red; text-align:center;">You have already registered!</p>
                         </div>

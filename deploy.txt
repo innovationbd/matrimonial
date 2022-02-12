@@ -1,1 +1,7 @@
 ng build --prod --output-path dist --base-href /matrimuna/
+
+ng build --aot
+
+at index.html ----
+<title>MUNA Matrimoni</title>
+    <base href="http://tcarebd.xyz/matrimonial/">

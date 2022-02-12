@@ -112,6 +112,10 @@ export class NavbarComponent implements OnInit {
             return false;
         }*/
     }
+    isAdmin() {
+      if(localStorage.getItem('usertype')=='0') {return true;}
+      //return this.service.isadmin;
+    }
     logout() :void {
        this.service.logout();
      }

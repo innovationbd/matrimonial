@@ -35,7 +35,7 @@
 
                                   <input type="text" [(ngModel)]="userEmail" (click)="refreshUserList()" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
                               </div>
-
+                              <div *ngIf=!forgot()>
                               <label>Password</label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
@@ -45,10 +45,12 @@
                                 </div>
                                   <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
                               </div>
+                              </div>
 
 
 
-                              <button (click)="clickLogin()" class="btn btn-danger btn-block btn-round">Login</button>
+                              <button *ngIf=!forgot() (click)="clickLogin()" class="btn btn-danger btn-block btn-round">Login</button>
+                              <button *ngIf=forgot() (click)="sendCode()" class="btn btn-danger btn-block btn-round">Confirm Email</button>
                               <p style="text-align:center; font-size:bold; color:red;">{{errorMessage}}</p>
                             </div>
 
@@ -66,15 +68,14 @@
                                 </div>
                                 <button (click)="clickVerify()" class="btn btn-danger btn-block btn-round">Verify Email</button>
                                 <p *ngIf=wrongCode style="color:red; text-align:center; font-size:bold;">Wrong Verification Code!</p>
-                                <p style="text-align:center; font-size:bold;">This {{dummyvar}} is {{OpeningDate}}</p>
                               </div>
 
 
                           </div>
                           <div *ngIf=!gotVeriCode() class="forgot">
-                              <a href="" class="btn btn-link btn-danger">Forgot password?</a>
+                              <a *ngIf=!forgot() (click)=clickForgot() class="btn btn-link btn-danger">Forgot password?</a>
+                              <a *ngIf=forgot() (click)=clickRemember() class="btn btn-link btn-danger">Remember Password? Login</a>
                               <a [routerLink]="['/signup']" class="btn btn-link">Haven't an Account? Sign Up!</a>
-                              <p (click)="dummyfun()" style="text-align:center; font-size:bold;">This {{dummyvar}} is {{OpeningDate}}</p>
                           </div>
                       </div>
                     </div>

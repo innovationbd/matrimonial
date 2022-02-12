@@ -1,0 +1,263 @@
+<!--==========================
+  About Section
+============================-->
+<section id="about" class="wow fadeInUp">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-3">
+          <div *ngFor="let item of menu | slice:superadmin">
+            <button type="button" class="btn btn-success sidebar" (click)=activeMenu(item.id)>{{item.name}}</button>
+            <div *ngFor="let subitem of menu[item.id].submenu">
+              <button type="button" class="btn btn-success sidebar-sub" *ngIf=item.sub
+              data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addClick()">{{subitem}}
+              </button>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-lg-9 content">
+        <!-- Admin Panel
+        ======================-->
+        <div *ngIf=menu[0].status>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> Admin ID </th>
+                    <th> Admin User Name </th>
+                    <th> Admin Full Name</th>
+                    <th> Admin Level </th>
+                    <th> Admin Status</th>
+                    <th> Options </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let admin of adminusers">
+                    <td style="vertical-align: middle;"> {{admin.adminId}}</td>
+                    <td style="vertical-align: middle;">{{admin.adminUserName}}    </td>
+                    <td style="vertical-align: middle;">{{admin.adminFullName}}    </td>
+                    <td style="vertical-align: middle;">{{admin.adminLevel}}    </td>
+                    <td style="vertical-align: middle;">{{admin.adminStatus}}    </td>
+                    <td style="vertical-align: middle;">
+                        <button
+                        type=button class="btn btn-light mr-1" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        (click)="editClick(admin)"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                          </svg>
+                        </button>
+                        <button
+                        type=button class="btn btn-light mr-1"
+                        (click)="deleteClick(admin.adminId)"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                          </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="d-flex flex-row bd-highlight">
+                <div class="p-4 w-100 bd-highlight">
+                    <div class="form-group form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="AdminUserName" id="AdminUserName">
+                        <label for="AdminUserName">Admin User Name</label>
+                    </div>
+
+                    <div class="form-group form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="AdminPass" id="AdminPass">
+                        <label for="AdminUserName">Admin Password</label>
+                    </div>
+
+                    <div class="form-group form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="AdminFullName" id="AdminFullName">
+                        <label for="AdminUserName">Admin Full Name</label>
+                    </div>
+
+                    <div class="form-group form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="AdminLevel" id="AdminLevel">
+                        <label for="AdminUserName">Admin Level</label>
+                    </div>
+
+                    <div class="form-group form-floating">
+                        <input type="text" class="form-control" [(ngModel)]="AdminStatus" id="AdminStatus">
+                        <label for="AdminUserName">Admin Status</label>
+                    </div>
+                </div>
+            </div>
+
+                <button type="button" (click)="createClick()"
+                *ngIf="AdminId==0" class="btn btn-primary float-end">
+                Create Admin
+                </button>
+
+                <button type="button" (click)="updateClick()"
+                *ngIf="AdminId!=0" class="btn btn-primary float-end">
+                Update
+                </button>
+
+            </div>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- ========= end Admin Panel -->
+
+        <!-- Dashboard
+        ======================-->
+        <div *ngIf=menu[1].status class="ml-auto mr-auto">
+          <h1>Welcome {{adminUser.adminFullName}}</h1>
+        </div>
+        <!-- ========= end Dashboard -->
+
+        <!-- Male and Female User
+        ======================-->
+        <div *ngIf="menu[2].status||menu[3].status">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Name </th>
+                    <th> Email</th>
+                    <th> Cell Phone </th>
+                    <th> Options </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td style="vertical-align: middle;">{{user.userId}}</td>
+                    <td style="vertical-align: middle;">{{user.fullName}}</td>
+                    <td style="vertical-align: middle;">{{user.email}}</td>
+                    <td style="vertical-align: middle;">{{user.cellPhone}}</td>
+                    <td style="vertical-align: middle;">
+                        <button
+                        type=button class="btn btn-light mr-1"
+                        (mouseover)=editUser(user) data-bs-toggle="modal" data-bs-target="#editModal"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                          </svg>
+                        </button>
+                        <button
+                        type=button class="btn btn-light mr-1"
+                        (click)="deleteUser(user)"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                          </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="d-flex flex-row bd-highlight">
+                <div class="p-4 w-100 bd-highlight">
+                  <div class="form-group form-floating">
+                      <input type="text" [(ngModel)]="FullName" class="form-control" placeholder="Enter Your Full Name" id="fullName">
+                      <label for="FullName">Full Name</label>
+                  </div>
+
+                  <div class="form-group form-floating">
+                      <input type="text" [(ngModel)]="CellPhone" class="form-control" placeholder="Cell Phone Number" id="cellPhone">
+                      <label for="CellPhone">Cell Phone</label>
+                  </div>
+
+                  <div class="form-group form-floating">
+                      <input type="text" [(ngModel)]="Email" class="form-control" placeholder="Enter Your Email" id="email">
+                      <label for="Email">Email</label>
+                  </div>
+
+                  <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                      <input  class="form-control" [(ngModel)]="DateOfBirth"
+                           name="dp" id="dateOfBirth" type="date" />
+                      <label for="DateOfBirth">Date of Birth</label>
+                  </div>
+                </div>
+            </div>
+
+                <button type="button" (click)="createUser()"
+                class="btn btn-primary float-end">
+                Create User
+                </button>
+
+            </div>
+
+
+        </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="editModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <app-edit-profile></app-edit-profile>
+        </div>
+
+
+        </div>
+        </div>
+        </div>
+
+        <!-- ========= end Male User -->
+
+        <!-- Dashboard
+        ======================-->
+        <div *ngIf=menu[1].status>
+        </div>
+        <!-- ========= end Dashboard -->
+
+        <!-- Dashboard
+        ======================-->
+        <div *ngIf=menu[1].status>
+        </div>
+        <!-- ========= end Dashboard -->
+
+        <!-- Dashboard
+        ======================-->
+        <div *ngIf=menu[1].status>
+        </div>
+        <!-- ========= end Dashboard -->
+
+        <!-- Dashboard
+        ======================-->
+        <div *ngIf=menu[1].status>
+        </div>
+        <!-- ========= end Dashboard -->
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+</section><!-- #about -->

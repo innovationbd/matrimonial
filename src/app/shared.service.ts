@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class SharedService {
-readonly APIUrl = "http://127.0.0.1:8000";
-readonly PhotoUrl = "http://127.0.0.1:8000/media/";
+//readonly APIUrl = "http://127.0.0.1:8000";
+//readonly PhotoUrl = "http://127.0.0.1:8000/media/";
+
+readonly APIUrl = "http://b56a-220-152-112-162.ngrok.io";
+readonly PhotoUrl = "http://b56a-220-152-112-162.ngrok.io/media/";
+
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
 //readonly PhotoUrl = "https://marufbuet.pythonanywhere.com/media/";
   currentUser;
+  adminUser;
+  isadmin=false;
   checked = false;
 
   constructor(private http:HttpClient, private router : Router) { }
@@ -20,10 +26,28 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
    loginauth() {
      if(localStorage.getItem('isLoggedOut') == 'True') {
        this.router.navigate(['/login']);
+       return true;
      }
      if(localStorage.getItem('fromloginpage') == "True") {
        localStorage.removeItem('fromloginpage');
        return true;
+     }
+     else if(localStorage.getItem('usertype')=='0') {
+         this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
+           this.adminUser = data;
+           var token = this.adminUser.adminToken;
+           if(token == localStorage.getItem('usertoken')) {
+             var UserToken = this.getRandomInt(12345678,87654321);
+             localStorage.setItem('usertoken', UserToken);
+             this.updateAdminUser({adminId: this.adminUser.adminId, adminToken: UserToken}).subscribe();
+             this.isadmin=true;
+           }
+           else {
+             this.logout();
+             this.router.navigate(['/login']);
+           }
+         });
+         return true;
      }
      else if(localStorage.getItem('usertype')=='1') {
          this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
@@ -39,6 +63,7 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
              this.router.navigate(['/login']);
            }
          });
+         return true;
      }
      else if (localStorage.getItem('usertype')=='2') {
          this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
@@ -54,7 +79,9 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
              this.router.navigate(['/login']);
            }
          });
+         return true;
      }
+     this.router.navigate(['/login']);
    }
    loggedin() {
      if(localStorage.getItem('isLoggedOut') == 'False') {
@@ -63,7 +90,14 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
      else { return false; }
    }
    logout() :void {
-      if(localStorage.getItem('usertype')=='1') {
+     if(localStorage.getItem('usertype')=='0') {
+       this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
+         this.adminUser = data;
+         var UserToken = this.getRandomInt(12345678,87654321);
+         this.updateAdminUser({adminId: this.adminUser.adminId, userToken: UserToken}).subscribe();
+       });
+     }
+     else if(localStorage.getItem('usertype')=='1') {
         this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
           this.currentUser = data;
           var UserToken = this.getRandomInt(12345678,87654321);
@@ -79,12 +113,14 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
       }
       localStorage.removeItem('usertype');
       localStorage.removeItem('usertoken');
+      localStorage.removeItem('adminid');
       localStorage.removeItem('userid');
       localStorage.removeItem('username');
       localStorage.removeItem('userage');
+      localStorage.removeItem('gender');
+      localStorage.removeItem('menuadmin');
       localStorage.setItem('isLoggedOut','True');
     }
-
 
   getRandomInt(min, max) {
      min = Math.ceil(min);
@@ -103,9 +139,9 @@ readonly PhotoUrl = "http://127.0.0.1:8000/media/";
      var yyyy = today.getFullYear();
      return yyyy+'-'+mm+'-'+dd+' '+hh+':'+mn+':'+ss;
    }
-  isAdmin() {
-    return false;
-  }
+   isAdmin() {
+     if(localStorage.getItem('usertype')=='0') {return true;}
+   }
 
   mEncrypt(val) {
     return btoa(btoa(btoa(val)));

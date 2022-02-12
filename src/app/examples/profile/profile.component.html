@@ -12,47 +12,24 @@
 <div class="row">
     <div class="col-md-6 ml-auto mr-auto text-center">
         <h6 class="description">Profile Completeness</h6>
-        <ngb-progressbar type="success" class="mt-0" [value]="25" [striped]="true" [animated]="true"><i>25%</i></ngb-progressbar><br>
-        <p>Your profile is not complete yet. To see who best matches you, please complete your profile.</p>
-    </div>
-    <div class="row">
-        <div class="col-md-12 ml-auto mr-auto text-center">
-            <button [routerLink]="['/edit-profile']" type="button" class="btn btn-outline-danger btn-round">Complete Profile</button>
+        <ngb-progressbar type="success" class="mt-0" [value]=pct [striped]="true" [animated]="true"><i>{{pct}}%</i></ngb-progressbar><br>
+        <div *ngIf=!profileComplete()>
+          <p>Your profile is not complete yet. To see who best matches you, please complete your profile.</p>
+          <button [routerLink]="['/edit-profile']" type="button" class="btn btn-outline-danger btn-round">Complete Profile</button>
+        </div>
+        <br>
+        <div *ngIf=profileComplete()>
+          <button type="button" class="btn btn-outline-danger btn-round">TOP MATCHES</button>
         </div>
     </div>
+
 </div>
 
-<!--
-<div class="row">
-    <div class="col-md-12 ml-auto mr-auto text-center">
-        <button type="button" class="btn btn-outline-danger btn-just-icon"><i class="nc-icon nc-chat-33"></i></button>
-        <button type="button" class="btn btn-outline-danger btn-just-icon"><i class="nc-icon nc-tap-01"></i></button>
-        <button routerLink="top-matches" type="button" class="btn btn-outline-danger btn-round">Top Matches</button>
-        <button type="button" class="btn btn-outline-danger btn-round">View Profile</button>
-        <button type="button" class="btn btn-outline-danger btn-round">Complete Profile</button>
 
-    </div>
-</div>
-<br/>
-
-<router-outlet></router-outlet>
--->
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="nav-tabs-navigation">
+<div class="nav-tabs-navigation" *ngIf=profileComplete()>
     <div class="nav-tabs-wrapper">
         <ngb-tabset [justify]="'center'">
-            <ngb-tab title="Top 5 Matches">
+            <ngb-tab title="">
                 <ng-template ngbTabContent >
                     <div class="row following" id="follows">
                         <div class="col-md-6 ml-auto mr-auto">
@@ -60,10 +37,10 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                            <img src="./assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="./assets/img/faces/profile-icon.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                         <div class="col-md-7 col-sm-4 ml-auto">
-                                            <h6>Flume<br/><small>Musical Producer</small></h6>
+                                            <h6>Bony<br/><small>Age 23</small></h6>
                                         </div>
                                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                             <div class="form-check">
@@ -79,10 +56,10 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                            <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="./assets/img/faces/profile-icon.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                         <div class="col-md-7 col-sm-4 ml-auto">
-                                            <h6>Banks<br /><small>Singer</small></h6>
+                                            <h6>Rifat<br /><small>Age 30</small></h6>
                                         </div>
                                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                             <div class="form-check">
@@ -97,18 +74,6 @@
                             </ul>
                         </div>
                     </div>
-                </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Edit Profile">
-                <ng-template ngbTabContent *ngIf=true>
-                    <h3 class="text-muted">Not following anyone yet :(</h3>
-                    <br>
-                    <button class="btn btn-warning btn-round">Find artists</button>
-                </ng-template>
-                <ng-template ngbTabContent *ngIf=false>
-                    <h3 class="text-muted">Not following anyone yet True :(</h3>
-                    <br>
-                    <button class="btn btn-warning btn-round">Find artists</button>
                 </ng-template>
             </ngb-tab>
 
