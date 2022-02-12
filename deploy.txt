@@ -1,4 +1,6 @@
 ng build --prod --output-path dist --base-href /matrimonial/
+$ ngh
+
 
 ng build --aot
 

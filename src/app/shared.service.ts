@@ -11,7 +11,7 @@ export class SharedService {
 //readonly APIUrl = "http://127.0.0.1:8000";
 //readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 
-readonly APIUrl = "http://b56a-220-152-112-162.ngrok.io";
+readonly APIUrl = "http://b56a-220-152-112-162.ngrok.io/";
 readonly PhotoUrl = "http://b56a-220-152-112-162.ngrok.io/media/";
 
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
