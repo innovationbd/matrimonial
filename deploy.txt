@@ -1,4 +1,4 @@
-ng build --prod --output-path dist --base-href /matrimuna/
+ng build --prod --output-path dist --base-href /matrimonial/
 
 ng build --aot
 
