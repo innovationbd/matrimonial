@@ -130,20 +130,10 @@
               <label for="CellPhone">Website Slogan</label>
           </div>
 
-          <div class="form-group form-floating">
-              <input type="text" [(ngModel)]="Email" class="form-control" placeholder="Enter Your Email" id="email">
-              <label for="Email">Email</label>
-          </div>
-
-          <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
-              <input  class="form-control" [(ngModel)]="DateOfBirth"
-                   name="dp" id="dateOfBirth" type="date" />
-              <label for="DateOfBirth">Date of Birth</label>
-          </div>
         </div>
     </div>
 
-        <button type="button" (click)="createUser()"
+        <button type="button"
         class="btn btn-primary float-end">
         Create User
         </button>

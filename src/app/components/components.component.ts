@@ -23,6 +23,7 @@ export class ComponentsComponent implements OnInit {
     model: NgbDateStruct;
     photos;
     modalTitle="";
+    webtitle; webslogan;
     constructor(  private renderer : Renderer2,
                   private service:SharedService,
                   private router : Router
