@@ -11,8 +11,8 @@ export class SharedService {
 //readonly APIUrl = "http://127.0.0.1:8000";
 //readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 
-readonly APIUrl = "http://b56a-220-152-112-162.ngrok.io";
-readonly PhotoUrl = "http://b56a-220-152-112-162.ngrok.io/media/";
+readonly APIUrl = "https://munamatrimonial.com/api/WWxoV2RWbFhNV2hrU0Vwd1lsYzVkV0ZYUm5OTmFsRXdUWHBSUFE9PQ==";
+readonly PhotoUrl = "https://munamatrimonial.com/api/WWxoV2RWbFhNV2hrU0Vwd1lsYzVkV0ZYUm5OTmFsRXdUWHBSUFE9PQ==/media/";
 
 //readonly APIUrl = "https://marufbuet.pythonanywhere.com";
 //readonly PhotoUrl = "https://marufbuet.pythonanywhere.com/media/";
@@ -139,6 +139,15 @@ readonly PhotoUrl = "http://b56a-220-152-112-162.ngrok.io/media/";
      var yyyy = today.getFullYear();
      return yyyy+'-'+mm+'-'+dd+' '+hh+':'+mn+':'+ss;
    }
+   getAge(birthDate) {
+     var todate = new Date();
+     var bdate = new Date(birthDate);
+     var diff = todate.getTime() - bdate.getTime();
+     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+     var age = Math.round(diffDays / 365);
+     //localStorage.setItem('userage',this.currentUser.age);
+     return age;
+   }
    isAdmin() {
      if(localStorage.getItem('usertype')=='0') {return true;}
    }
@@ -221,31 +230,10 @@ readonly PhotoUrl = "http://b56a-220-152-112-162.ngrok.io/media/";
   }
 
 
-
-  getEmpList(): Observable<any[]> {
-    return this.http.get<any[]> (this.APIUrl + '/employee/');
-  }
-
-  addEmployee(val:any) {
-    return this.http.post (this.APIUrl + '/employee/', val);
-  }
-
-  updateEmployee(val:any) {
-    return this.http.put (this.APIUrl + '/employee/', val);
-  }
-
-  deleteEmployee(val:any) {
-    return this.http.delete (this.APIUrl + '/employee/' + val);
-  }
-
-
   UploadPhoto(val:any) {
     return this.http.post (this.APIUrl + '/SaveFile', val);
   }
 
-  getAllDepartmentNames(): Observable<any[]> {
-    return this.http.get<any[]> (this.APIUrl + '/department/');
-  }
 
   STATES = [
     {

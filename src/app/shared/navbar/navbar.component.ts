@@ -98,6 +98,7 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
     isLoggedin() {
       this.userName = localStorage.getItem('username');
       return this.service.loggedin();

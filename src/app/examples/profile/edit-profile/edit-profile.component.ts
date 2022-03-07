@@ -71,8 +71,11 @@ export class EditProfileComponent implements OnInit {
   isMale() {
     if(this.currentUser.gender == 'Male') { return true; }
   }
+  matchedId = [1,5,3];
   clickSave() {
     this.currentUser.userToken = localStorage.getItem('usertoken');
+    this.currentUser.lastEdit = this.service.getDateTime();
+    this.currentUser.matchId = String(this.matchedId);
     if(!this.imStatusOther()) { this.currentUser.immigrationStatusOther = null; }
     if(this.currentUser.gender == 'Male') {
       this.service.updateMaleUser(this.currentUser).subscribe(res=>{
@@ -84,14 +87,13 @@ export class EditProfileComponent implements OnInit {
         alert(res.toString());
       });
     }
-
   }
   getAge() {
-    var todate = new Date();
+    /*var todate = new Date();
     var bdate = new Date(this.currentUser.dateOfBirth);
     var diff = todate.getTime() - bdate.getTime();
-    var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-    this.currentUser.age = Math.round(diffDays / 365);
+    var diffDays = Math.ceil(diff / (1000 * 3600 * 24));*/
+    this.currentUser.age = this.service.getAge(this.currentUser.dateOfBirth);
     localStorage.setItem('userage',this.currentUser.age);
     return true;
   }

@@ -21,7 +21,7 @@
         margin: $navbar-margin-brand;
         padding: $navbar-padding-brand;
         font-size: $font-size-base;
-        color: $default-color;
+        color: $theme-color;
         text-transform: uppercase;
     }
     .nav-link{
@@ -56,7 +56,16 @@
             font-size: $font-size-small;
             text-transform: uppercase;
             font-weight: 600;
-            color: $default-color;
+            color: $theme-color;
+         }
+         .active .nav-link
+         .active .nav-link:hover,
+         .active .nav-link:focus,
+         .nav-item .nav-link:hover,
+         .nav-item .nav-link:focus{
+             background-color: transparent;
+             color: $warning-color;
+             @include opacity(1);
          }
         .nav-item .nav-link.btn{
             margin: $navbar-margin-a-btn;
@@ -117,7 +126,7 @@
        @include center-item();
     }
     &.navbar-transparent{
-        padding-top: 25px;
+        padding-top: 5px;
     }
     .logo-container{
         margin-top: 5px;
@@ -147,7 +156,7 @@
 .navbar.fixed-top{
     .nav-link{
         i{
-            top: 4px;
+            top: 2px;
         }
     }
 }
@@ -159,20 +168,20 @@
 }
 .navbar-transparent, [class*="bg"]{
     .navbar-brand{
-        color: $white-color;
+        color: $theme-color;
         @include opacity(.9);
 
         &:focus,
         &:hover{
             background-color: transparent;
             @include opacity(1);
-            color: $white-color;
+            color: $warning-color;
         }
     }
 
     .navbar-nav{
         .nav-item .nav-link:not(.btn){
-            color: $white-color;
+            color: $theme-color;
             border-color: $white-color;
         }
         .active .nav-link
@@ -181,7 +190,7 @@
         .nav-item .nav-link:hover,
         .nav-item .nav-link:focus{
             background-color: transparent;
-            color: $white-color;
+            color: $warning-color;
             @include opacity(1);
         }
         .nav .nav-item a.btn:hover{
@@ -399,7 +408,7 @@
 
     .navbar[class*="bg-"] & .navbar-toggler-bar,
     .navbar.navbar-transparent & .navbar-toggler-bar{
-        background: #F44336;
+        background: #fff;
     }
 
     .navbar-toggler-bar{

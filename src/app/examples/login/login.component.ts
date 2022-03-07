@@ -175,9 +175,10 @@ export class LoginComponent implements OnInit {
           cellPhone:this.currentUser.tempCellPhone,
           email:this.currentUser.tempEmail,
           dateOfBirth:this.currentUser.tempDateOfBirth,
+          age:this.service.getAge(this.currentUser.tempDateOfBirth),
           matchShowLimit:5,
           userPass:this.currentUser.tempPass,
-          status:"Active",
+          status:"Inactive",
           openingDate:this.service.getDateTime(),
           lastEdit:this.service.getDateTime()
         };

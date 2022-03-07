@@ -71,8 +71,7 @@ export class AdminComponent implements OnInit {
   }
 
   activeMenu(item) {
-    if(item==2) { this.users = this.maleusers; }
-    else if(item==3) { this.users = this.femaleusers; }
+
     for(var i=0; i<this.menu.length; i++) {
       this.menu[i].status = (i == item);
       if(i == item) {
@@ -84,6 +83,7 @@ export class AdminComponent implements OnInit {
     }
     //localStorage.setItem('menuadmin', item);
   }
+
   addClick(){
     this.modalTitle="Add Admin";
     this.AdminId=0;
@@ -124,9 +124,10 @@ export class AdminComponent implements OnInit {
       gender: 'Male',
       cellPhone: this.CellPhone,
       dateOfBirth: this.DateOfBirth,
-      userPass: this.service.mEncrypt('1234'),
+      age:this.service.getAge(this.DateOfBirth),
+      userPass: this.service.mEncrypt('1234'),  //default password 1234
       matchShowLimit:5,
-      status:"Active",
+      status:"Inactive",
       openingDate:this.service.getDateTime(),
       lastEdit:this.service.getDateTime()
     };

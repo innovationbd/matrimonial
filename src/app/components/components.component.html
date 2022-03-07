@@ -3,7 +3,6 @@
   Intro Section
 ============================-->
 <section id="intro">
-
   <div class="intro-content">
     <h2><span>MUNA Matrimonial</span><br>Let's Walk Together
       <button *ngIf="isAdmin()" type="button" class="btn btn-light mr-1"
@@ -22,6 +21,7 @@
     </div> -->
 
         <div  *ngIf="!loggedin" class="mr-auto ml-auto">
+
           <div class="card-register">
 
               <form class="register-form">
@@ -80,7 +80,7 @@
         </div>
   </div>
    <div id="intro-carousel" class="owl-carousel" >
-    <div *ngFor="let photo of photos" class="item" style="background-image: url('assets/img/intro-carousel/photo');">
+    <div class="item" style="background-image: url('assets/img/intro-carousel/Picture1.jpg');">
       <div class="caption">
           <p>Hasan & Sumaiya: They Got Married.</p>
       </div>

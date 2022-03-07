@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
         speed: 400
     });
 
-    /*if ($('#nav-menu-container').length) {
+    if ($('#nav-menu-container').length) {
         var $mobile_nav = $('#nav-menu-container').clone().prop({
             id: 'mobile-nav'
         });
@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
         });
     } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
         $("#mobile-nav, #mobile-nav-toggle").hide();
-    }*/
+    }
 
     $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {

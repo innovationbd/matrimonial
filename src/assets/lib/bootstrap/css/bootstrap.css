@@ -4007,7 +4007,7 @@ tbody.collapse.show {
   padding-bottom: 0.5rem;
 }
 
-.navbar-collapse {
+.navbar-collapseb {
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
   -webkit-box-flex: 1;
@@ -4018,7 +4018,7 @@ tbody.collapse.show {
   align-items: center;
 }
 
-.navbar-toggler {
+.navbar-togglerb {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
@@ -4027,15 +4027,15 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-.navbar-toggler:hover, .navbar-toggler:focus {
+.navbar-togglerb:hover, .navbar-togglerb:focus {
   text-decoration: none;
 }
 
-.navbar-toggler:not(:disabled):not(.disabled) {
+.navbar-togglerb:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
 
-.navbar-toggler-icon {
+.navbar-togglerb-icon {
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
@@ -4085,14 +4085,14 @@ tbody.collapse.show {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-  .navbar-expand-sm .navbar-collapse {
+  .navbar-expand-sm .navbar-collapseb {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
   }
-  .navbar-expand-sm .navbar-toggler {
+  .navbar-expand-sm .navbar-togglerb {
     display: none;
   }
   .navbar-expand-sm .dropup .dropdown-menu {
@@ -4141,14 +4141,14 @@ tbody.collapse.show {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-  .navbar-expand-md .navbar-collapse {
+  .navbar-expand-md .navbar-collapseb {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
   }
-  .navbar-expand-md .navbar-toggler {
+  .navbar-expand-md .navbar-togglerb {
     display: none;
   }
   .navbar-expand-md .dropup .dropdown-menu {
@@ -4197,14 +4197,14 @@ tbody.collapse.show {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-  .navbar-expand-lg .navbar-collapse {
+  .navbar-expand-lg .navbar-collapseb {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
   }
-  .navbar-expand-lg .navbar-toggler {
+  .navbar-expand-lg .navbar-togglerb {
     display: none;
   }
   .navbar-expand-lg .dropup .dropdown-menu {
@@ -4253,14 +4253,14 @@ tbody.collapse.show {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-  .navbar-expand-xl .navbar-collapse {
+  .navbar-expand-xl .navbar-collapseb {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
   }
-  .navbar-expand-xl .navbar-toggler {
+  .navbar-expand-xl .navbar-togglerb {
     display: none;
   }
   .navbar-expand-xl .dropup .dropdown-menu {
@@ -4312,7 +4312,7 @@ tbody.collapse.show {
   flex-wrap: nowrap;
 }
 
-.navbar-expand .navbar-collapse {
+.navbar-expand .navbar-collapseb {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -4320,7 +4320,7 @@ tbody.collapse.show {
   flex-basis: auto;
 }
 
-.navbar-expand .navbar-toggler {
+.navbar-expand .navbar-togglerb {
   display: none;
 }
 
@@ -4356,12 +4356,12 @@ tbody.collapse.show {
   color: rgba(0, 0, 0, 0.9);
 }
 
-.navbar-light .navbar-toggler {
+.navbar-light .navbar-togglerb {
   color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-.navbar-light .navbar-toggler-icon {
+.navbar-light .navbar-togglerb-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
@@ -4404,12 +4404,12 @@ tbody.collapse.show {
   color: #fff;
 }
 
-.navbar-dark .navbar-toggler {
+.navbar-dark .navbar-togglerb {
   color: rgba(255, 255, 255, 0.5);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar-dark .navbar-toggler-icon {
+.navbar-dark .navbar-togglerb-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 

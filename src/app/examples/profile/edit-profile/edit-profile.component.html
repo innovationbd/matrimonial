@@ -347,17 +347,28 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-4">
           <div class="form-group form-floating">
               <input type="text" [(ngModel)]="currentUser.otherDegree" class="form-control" placeholder="Other Degree(s)" id="otherDegree">
               <label for="otherDegree">Other Degree(s)</label>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <div class="form-group form-floating">
                 <input type="text" [(ngModel)]="currentUser.otherDegreeYear" class="form-control" placeholder="Other Degree(s) Year" id="otherDegreeYear">
                 <label for="otherDegreeYear">Year(s)</label>
             </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+              <select [(ngModel)]="currentUser.highestEducation"  class="form-select" id="highestEducation">
+                <option value='Doctorate'>Doctorate</option>
+                <option value='Masters'>Masters</option>
+                <option value='Bachelor'>Bachelor</option>
+                <option value='Below Bachelor'>Below Bachelor</option>
+              </select>
+              <label for="highestEducation">Highest Education Level</label>
+          </div>
         </div>
       </div>
 

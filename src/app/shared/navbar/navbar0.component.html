@@ -54,6 +54,76 @@
 
 
 
+<!--==========================
+  Header
+============================-->
+
+<header id="header">
+  <div class="container">
+
+<nav  class="navbar navbar-expand-lg fixed-top navbar-transparent" >
+    <div class="container">
+        <div class="navbar-translate">
+          <div id="logo" class="pull-left">
+            <h1 *ngIf="!isLoggedin()"><span><i class="fa fa-heart"></i></span><a href="" class="scrollto">`  <b>MUNA MATRIMONIAL</b></a></h1>
+
+            <h1 *ngIf="isLoggedin()&&!isAdmin()"><span><i class="fa fa-heart"></i></span><a [routerLink]="['/user-profile']" class="scrollto">`  <b style="text-transform: uppercase;">{{userName}}</b></a></h1>
+            <h1 *ngIf="isLoggedin()&&isAdmin()"><span><i class="fa fa-heart"></i></span><a [routerLink]="['/admin']" class="scrollto">`  <b style="text-transform: uppercase;">{{userName}}</b></a></h1>
+            <!-- <a href="#body"><img src="../assets/img/logo.png" alt="" title="" /></a>-->
+          </div>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="nav-menu navbar-nav ml-auto">
+              <li class="menu-active" *ngIf="isHome()"><a href="#body">Home</a></li>
+              <li *ngIf="!isHome()"><a href="">Home</a></li>
+              <li *ngIf="isHome()"><a href="#services">Services</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/services']">Services</a></li>
+              <li *ngIf="isHome()"><a href="#portfolio">Events</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/events']">Events</a></li>
+              <li *ngIf="isHome()"><a href="#about">About Us</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/about']">About Us</a></li>
+              <li *ngIf="isHome()"><a href="#faq">FAQ</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/faq']">FAQ</a></li>
+              <li *ngIf="isHome()"><a href="#call-to-action">Donate</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/donate']">Donate</a></li>
+              <li *ngIf="isHome()"><a href="#contact">Contact</a></li>
+              <li *ngIf="!isHome()"><a [routerLink]="['/contact']">Contact</a></li>
+              <li *ngIf="!isLogin() && !isLoggedin()"><a [routerLink]="['/login']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>LOGIN</a></li>
+              <li *ngIf="isLogin()"><a [routerLink]="['/signup']"><span padding=5px><i class="fa fa-user-circle-o "></i></span>SIGNUP</a></li>
+
+              <!--
+              <li *ngIf="isLoggedin()" class="nav-item">
+                  <a  href="#pk"><i class="nc-icon nc-single-02" aria-hidden="true"></i></a>
+              </li>-->
+              <li *ngIf="isLoggedin()" class="nav-item ">
+                  <div ngbDropdown class="dropdown" placement="bottom-left">
+                  <a  id="dropdownBasic1" style="color: #F44336;" ngbDropdownToggle><i class="nc-icon nc-bullet-list-67" aria-hidden="true"></i></a>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-danger dropdown-menu-right">
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/view-profile']">View Profile</a>
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/user-profile']">Top Matches</a>
+                          <a *ngIf=!isAdmin() class="dropdown-item" [routerLink]="['/edit-profile']">Edit Profile</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" [routerLink]="['/password']">Change Passwords</a>
+                          <a (click)="logout()" class="dropdown-item" [routerLink]="['/login']">Log Out</a>
+                      </div>
+                  </div>
+              </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+</div>
+</header>
+
+
+
 
 <!--==========================
     Top Bar
