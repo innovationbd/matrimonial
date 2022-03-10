@@ -262,8 +262,8 @@
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="permanentResident" value="Permanent Resident" >
-                  Permanent Resident
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="parmanentResident" value="Parmanent Resident" >
+                  Parmanent Resident
                   <span class="form-check-sign"></span>
                 </label>
               </div>
@@ -614,7 +614,7 @@ Personal Information
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.wear" name="wear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.wear" name="wear" id="jelbab-abaya" value="Jelbab/Abaya" >
                   Jelbab/Abaya
                   <span class="form-check-sign"></span>
                 </label>
@@ -718,7 +718,7 @@ SPOUSAL PREFERENCES
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="jelbab-abaya" value="Jelbab-Abaya" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preWear" name="preWear" id="jelbab-abaya" value="Jelbab/Abaya" >
                   Jelbab/Abaya
                   <span class="form-check-sign"></span>
                 </label>
@@ -765,7 +765,7 @@ SPOUSAL PREFERENCES
               </div>
           </div>
           <div class="col-sm-3">
-          <h6>Are You Fine with <br>Smoking?</h6>
+          <h6>Are You Fine with Smoking?</h6>
               <div class="form-check-radio">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preSmoking" name="preSmoking" id="no" value="No" checked="">
@@ -846,8 +846,22 @@ SPOUSAL PREFERENCES
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="permanentResident" value="Permanent Resident" >
-                  Permanent Resident
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="parmanentResident" value="Parmanent Resident" >
+                  Parmanent Resident
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="citizenResident" value="US Citizen/Parmanent Resident" >
+                  US Citizen/Parmanent Resident
+                  <span class="form-check-sign"></span>
+                </label>
+              </div>
+              <div class="form-check-radio">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preImmigrationStatus" name="preImmigrationStatus" id="noPreference" value="No Preference" >
+                  No Preference
                   <span class="form-check-sign"></span>
                 </label>
               </div>

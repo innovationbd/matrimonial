@@ -23,104 +23,7 @@ readonly PhotoUrl = "https://munamatrimonial.com/api/WWxoV2RWbFhNV2hrU0Vwd1lsYzV
 
   constructor(private http:HttpClient, private router : Router) { }
 
-   loginauth() {
-     if(localStorage.getItem('isLoggedOut') == 'True') {
-       this.router.navigate(['/login']);
-       return true;
-     }
-     if(localStorage.getItem('fromloginpage') == "True") {
-       localStorage.removeItem('fromloginpage');
-       return true;
-     }
-     else if(localStorage.getItem('usertype')=='0') {
-         this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
-           this.adminUser = data;
-           var token = this.adminUser.adminToken;
-           if(token == localStorage.getItem('usertoken')) {
-             var UserToken = this.getRandomInt(12345678,87654321);
-             localStorage.setItem('usertoken', UserToken);
-             this.updateAdminUser({adminId: this.adminUser.adminId, adminToken: UserToken}).subscribe();
-             this.isadmin=true;
-           }
-           else {
-             this.logout();
-             this.router.navigate(['/login']);
-           }
-         });
-         return true;
-     }
-     else if(localStorage.getItem('usertype')=='1') {
-         this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-           this.currentUser = data;
-           var token = this.currentUser.userToken;
-           if(token == localStorage.getItem('usertoken')) {
-             var UserToken = this.getRandomInt(12345678,87654321);
-             localStorage.setItem('usertoken', UserToken);
-             this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-           }
-           else {
-             this.logout();
-             this.router.navigate(['/login']);
-           }
-         });
-         return true;
-     }
-     else if (localStorage.getItem('usertype')=='2') {
-         this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-           this.currentUser = data;
-           var token = this.currentUser.userToken;
-           if(token == localStorage.getItem('usertoken')) {
-             var UserToken = this.getRandomInt(12345678,87654321);
-             localStorage.setItem('usertoken', UserToken);
-             this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-           }
-           else {
-             this.logout();
-             this.router.navigate(['/login']);
-           }
-         });
-         return true;
-     }
-     this.router.navigate(['/login']);
-   }
-   loggedin() {
-     if(localStorage.getItem('isLoggedOut') == 'False') {
-       return true;
-     }
-     else { return false; }
-   }
-   logout() :void {
-     if(localStorage.getItem('usertype')=='0') {
-       this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
-         this.adminUser = data;
-         var UserToken = this.getRandomInt(12345678,87654321);
-         this.updateAdminUser({adminId: this.adminUser.adminId, userToken: UserToken}).subscribe();
-       });
-     }
-     else if(localStorage.getItem('usertype')=='1') {
-        this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-          this.currentUser = data;
-          var UserToken = this.getRandomInt(12345678,87654321);
-          this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-        });
-      }
-      else if(localStorage.getItem('usertype')=='2') {
-        this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
-          this.currentUser = data;
-          var UserToken = this.getRandomInt(12345678,87654321);
-          this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
-        });
-      }
-      localStorage.removeItem('usertype');
-      localStorage.removeItem('usertoken');
-      localStorage.removeItem('adminid');
-      localStorage.removeItem('userid');
-      localStorage.removeItem('username');
-      localStorage.removeItem('userage');
-      localStorage.removeItem('gender');
-      localStorage.removeItem('menuadmin');
-      localStorage.setItem('isLoggedOut','True');
-    }
+
 
   getRandomInt(min, max) {
      min = Math.ceil(min);
@@ -138,6 +41,10 @@ readonly PhotoUrl = "https://munamatrimonial.com/api/WWxoV2RWbFhNV2hrU0Vwd1lsYzV
      var ss = String(today.getSeconds());
      var yyyy = today.getFullYear();
      return yyyy+'-'+mm+'-'+dd+' '+hh+':'+mn+':'+ss;
+   }
+   getYear(today=new Date()) {
+     var yyyy = Number(today.getFullYear());
+     return yyyy;
    }
    getAge(birthDate) {
      var todate = new Date();
@@ -233,6 +140,105 @@ readonly PhotoUrl = "https://munamatrimonial.com/api/WWxoV2RWbFhNV2hrU0Vwd1lsYzV
   UploadPhoto(val:any) {
     return this.http.post (this.APIUrl + '/SaveFile', val);
   }
+
+  loginauth() {
+    if(localStorage.getItem('isLoggedOut') == 'True') {
+      this.router.navigate(['/login']);
+      return true;
+    }
+    if(localStorage.getItem('fromloginpage') == "True") {
+      localStorage.removeItem('fromloginpage');
+      return true;
+    }
+    else if(localStorage.getItem('usertype')=='0') {
+        this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
+          this.adminUser = data;
+          var token = this.adminUser.adminToken;
+          if(token == localStorage.getItem('usertoken')) {
+            var UserToken = this.getRandomInt(12345678,87654321);
+            localStorage.setItem('usertoken', UserToken);
+            this.updateAdminUser({adminId: this.adminUser.adminId, adminToken: UserToken}).subscribe();
+            this.isadmin=true;
+          }
+          else {
+            this.logout();
+            this.router.navigate(['/login']);
+          }
+        });
+        return true;
+    }
+    else if(localStorage.getItem('usertype')=='1') {
+        this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+          this.currentUser = data;
+          var token = this.currentUser.userToken;
+          if(token == localStorage.getItem('usertoken')) {
+            var UserToken = this.getRandomInt(12345678,87654321);
+            localStorage.setItem('usertoken', UserToken);
+            this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+          }
+          else {
+            this.logout();
+            this.router.navigate(['/login']);
+          }
+        });
+        return true;
+    }
+    else if (localStorage.getItem('usertype')=='2') {
+        this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+          this.currentUser = data;
+          var token = this.currentUser.userToken;
+          if(token == localStorage.getItem('usertoken')) {
+            var UserToken = this.getRandomInt(12345678,87654321);
+            localStorage.setItem('usertoken', UserToken);
+            this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+          }
+          else {
+            this.logout();
+            this.router.navigate(['/login']);
+          }
+        });
+        return true;
+    }
+    this.router.navigate(['/login']);
+  }
+  loggedin() {
+    if(localStorage.getItem('isLoggedOut') == 'False') {
+      return true;
+    }
+    else { return false; }
+  }
+  logout() :void {
+    if(localStorage.getItem('usertype')=='0') {
+      this.getAdminList(Number(localStorage.getItem('adminid'))).subscribe(data=>{
+        this.adminUser = data;
+        var UserToken = this.getRandomInt(12345678,87654321);
+        this.updateAdminUser({adminId: this.adminUser.adminId, userToken: UserToken}).subscribe();
+      });
+    }
+    else if(localStorage.getItem('usertype')=='1') {
+       this.getMaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+         this.currentUser = data;
+         var UserToken = this.getRandomInt(12345678,87654321);
+         this.updateMaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+       });
+     }
+     else if(localStorage.getItem('usertype')=='2') {
+       this.getFemaleUserList(Number(localStorage.getItem('userid'))).subscribe(data=>{
+         this.currentUser = data;
+         var UserToken = this.getRandomInt(12345678,87654321);
+         this.updateFemaleUser({userId: this.currentUser.userId, userToken: UserToken}).subscribe();
+       });
+     }
+     localStorage.removeItem('usertype');
+     localStorage.removeItem('usertoken');
+     localStorage.removeItem('adminid');
+     localStorage.removeItem('userid');
+     localStorage.removeItem('username');
+     localStorage.removeItem('userage');
+     localStorage.removeItem('gender');
+     localStorage.removeItem('menuadmin');
+     localStorage.setItem('isLoggedOut','True');
+   }
 
 
   STATES = [

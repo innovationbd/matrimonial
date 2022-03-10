@@ -71,12 +71,13 @@ export class EditProfileComponent implements OnInit {
   isMale() {
     if(this.currentUser.gender == 'Male') { return true; }
   }
-  matchedId = [1,5,3];
+  //matchedId = [1,5,3];
   clickSave() {
     this.currentUser.userToken = localStorage.getItem('usertoken');
     this.currentUser.lastEdit = this.service.getDateTime();
-    this.currentUser.matchId = String(this.matchedId);
+    //this.currentUser.matchId = String(this.matchedId);
     if(!this.imStatusOther()) { this.currentUser.immigrationStatusOther = null; }
+    if(this.currentUser.preEthnic == 'No Preference') { this.currentUser.preEthnicSpecific = this.currentUser.preEthnic; }
     if(this.currentUser.gender == 'Male') {
       this.service.updateMaleUser(this.currentUser).subscribe(res=>{
         alert(res.toString());

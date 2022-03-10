@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
     State=null;
     CellPhone=null;
     Email=null;
+    BirthYear=null;
     DateOfBirth=null;
     UserPass=null;
 
@@ -43,10 +44,16 @@ export class SignupComponent implements OnInit {
     code = this.service.getRandomInt(123456,987654);
     regedEmail;
     userAlreadyExist = false;
+    YEARS:any = [];
     STATES = this.service.STATES;
 
     ngOnInit() {
       this.refreshUserList();
+      var year = this.service.getYear();
+      for(var i=0; i<=50; i++)
+      {
+        this.YEARS[i] = year-18-i;  //Assuming minimum marriage age is 18
+      }
     }
 
 
@@ -90,8 +97,8 @@ export class SignupComponent implements OnInit {
 
          if(!this.status) { return false; }
 
-        var dateBirth=null;
-        if(this.DateOfBirth != null) { dateBirth = this.DateOfBirth.year+'-'+this.DateOfBirth.month+'-'+this.DateOfBirth.day; }
+        //var dateBirth=null;
+        //if(this.DateOfBirth != null) { dateBirth = this.DateOfBirth.year+'-'+this.DateOfBirth.month+'-'+this.DateOfBirth.day; }
 
         var val={
         tempName:this.FullName,
@@ -99,7 +106,8 @@ export class SignupComponent implements OnInit {
         tempState:this.State,
         tempCellPhone:this.CellPhone,
         tempEmail:this.Email,
-        tempDateOfBirth:dateBirth,
+        //tempDateOfBirth:dateBirth,
+        tempBirthYear:this.BirthYear,
         tempVeriCode:this.code,
         tempPass:this.UserPass,
         tempDateTime:this.service.getDateTime()
