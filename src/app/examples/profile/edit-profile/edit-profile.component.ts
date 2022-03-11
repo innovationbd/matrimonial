@@ -46,9 +46,7 @@ export class EditProfileComponent implements OnInit {
     return true;
   }
   imStatusOther() {
-    if(this.currentUser.immigrationStatus == null) { return false; }
-    if(this.currentUser.immigrationStatus == "US Citizen" || this.currentUser.immigrationStatus == "Permanent Resident") { return false; }
-    else { return true; }
+    if(this.currentUser.immigrationStatus == "Other") { return true; }
   }
   relPracticeOther() {
     if(this.currentUser.religiousPractice == "Other") { return true; }
@@ -98,6 +96,18 @@ export class EditProfileComponent implements OnInit {
     localStorage.setItem('userage',this.currentUser.age);
     return true;
   }
+
+  IMMIGRATION_STATUS = ['US Citizen',
+              'Parmanent Resident',
+              'Student Visa',
+              'F-1',
+              'H1B',
+              'EAD',
+              'Bangladesh',
+              'Other'];
+  MARRITAL_STATUS = ['Single',
+              'Divorced',
+              'Widowed'];
   FullName;
   NickName;
   Gender;

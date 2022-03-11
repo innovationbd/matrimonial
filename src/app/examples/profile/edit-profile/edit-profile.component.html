@@ -189,6 +189,14 @@
         </div>
 
         <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                <select [(ngModel)]="currentUser.immigrationStatus" class="form-select" id="immigrationStatus">
+                  <option *ngFor="let status of IMMIGRATION_STATUS" value={{status}}>{{status}}</option>
+                </select>
+                <label for="immigrationStatus">Immigration Status</label>
+            </div>
+          </div>
           <div class="col-sm-6">
           <label>Current Marital Status:</label>
           <br>
@@ -250,31 +258,15 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6">
-          <label>Immigration Status</label>
-          <br>
-              <div class="form-check-radio">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="UScitizen" value="US Citizen" >
-                  US Citizen
-                  <span class="form-check-sign"></span>
-                </label>
-              </div>
-              <div class="form-check-radio">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="parmanentResident" value="Parmanent Resident" >
-                  Parmanent Resident
-                  <span class="form-check-sign"></span>
-                </label>
-              </div>
-              <div class="form-check-radio">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.immigrationStatus" name="immigrationStatus" id="other" value="Other">
-                  Other
-                  <span class="form-check-sign"></span>
-                </label>
-              </div>
+          <div class="col-sm-4">
+            <div class="form-group form-floating" [ngClass]="{'input-group-focus':focus===true}">
+                <select [(ngModel)]="currentUser.immigrationStatus" class="form-select" id="immigrationStatus">
+                  <option *ngFor="let status of IMMIGRATION_STATUS" value={{status}}>{{status}}</option>
+                </select>
+                <label for="immigrationStatus">Immigration Status</label>
             </div>
+          </div>
+
             <div class="col-sm-6">
                 <div class="form-group form-floating" *ngIf=imStatusOther()>
                     <input type="text" [(ngModel)]="currentUser.immigrationStatusOther" class="form-control" placeholder="What are their Ages?" id="immigrationStatusOther">
@@ -744,14 +736,14 @@ SPOUSAL PREFERENCES
           <br>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="beard" value="Beard" checked="">
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="beard" value="Yes" checked="">
                   Beard
                   <span class="form-check-sign"></span>
                 </label>
               </div>
               <div class="form-check-radio">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="noBeard" value="No Beard" >
+                  <input class="form-check-input" type="radio" [(ngModel)]="currentUser.preBeard" name="preBeard" id="noBeard" value="No" >
                   No Beard
                   <span class="form-check-sign"></span>
                 </label>
