@@ -90,7 +90,7 @@ export class EditProfileComponent implements OnInit {
   getAge() {
     /*var todate = new Date();
     var bdate = new Date(this.currentUser.dateOfBirth) innovationbd;
-    var diff = todate.getTime() - bdate.getTime();
+    var diff = todate.getTime() - bdate.getTime(); innovationbd/branch
     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));*/
     this.currentUser.age = this.service.getAge(this.currentUser.dateOfBirth);
     localStorage.setItem('userage',this.currentUser.age);
